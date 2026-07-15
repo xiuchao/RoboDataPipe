@@ -1,0 +1,35 @@
+DSRFM_easy:
+  repo_id: ases200q2/UR5_RTDE_SpaceMouse_EE_pick_and_place_object_Easy_filtered
+  root: /data/xiuchao/biArm/DEM/data_DSRFM/ur5_easy_filtered
+  signal_source: action
+  gripper_dim: -1
+  direction: increase
+  cameras:
+    - observation.images.camera_1
+    - observation.images.camera_2
+  default_camera: 
+
+DSRFM_v3:
+  repo_id: ases200q2/UR5_RTDE_SpaceMouse_EE_v3_20260625-135224_filtered
+  root: /data/xiuchao/biArm/DEM/data_DSRFM/ur5_v3_filtered
+  cameras:
+    - observation.images.camera_1
+    - observation.images.camera_2
+  default_camera: 
+
+DEM_handposition:
+  repo_id: alphabot2/aibot2_2026-07-07_hand_position_donothing
+  root: /data/xiuchao/biArm/DEM/data_DEM/hand_postion_donothing/
+  cameras:
+    - observation.images.camera_1
+    - observation.images.camera_2
+  default_camera: observation.images.camera_2
+
+DEM_pickplace:
+  repo_id: alphabot2/aibot2_2026-07-07_hand_position_pick_and_place
+  root: /data/xiuchao/biArm/DEM/data_DEM/hand_position_pick_and_place/
+  cameras:
+    - observation.images.camera_1
+    - observation.images.camera_2
+  default_camera: observation.images.camera_2
+

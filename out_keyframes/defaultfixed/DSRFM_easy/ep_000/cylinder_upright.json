@@ -1,0 +1,22 @@
+{
+  "prompt_mode": "cylinder_upright",
+  "keyframe_types": [
+    "post_place",
+    "episode_end"
+  ],
+  "question": "Is the cylindrical object upright after placement?",
+  "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder appears to have its long axis pointing upwards and is standing on its bottom face, indicating it is upright.\"\n}\n```",
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "images": [
+    {
+      "keyframe_type": "post_place",
+      "camera": "observation.images.camera_1",
+      "path": "/data/xiuchao/biArm/DEM/out_keyframes/defaultfixed/DSRFM_easy/ep_000/post_place_observation_images_camera_1_frame_000273.jpg"
+    },
+    {
+      "keyframe_type": "episode_end",
+      "camera": "observation.images.camera_1",
+      "path": "/data/xiuchao/biArm/DEM/out_keyframes/defaultfixed/DSRFM_easy/ep_000/episode_end_observation_images_camera_1_frame_000337.jpg"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+[
+  {
+    "keyframe_type": "episode_start",
+    "episode_index": 0,
+    "local_index": 0,
+    "frame_index": 0,
+    "timestamp": 0.0,
+    "score": 0.0,
+    "method": "episode_boundary",
+    "images": {
+      "observation.images.camera_1": "/data/xiuchao/biArm/DEM/out_keyframes_defaultfixed/DSRFM_easy/ep_000/episode_start_observation_images_camera_1_frame_000000.jpg"
+    },
+    "signal_value": 0.0
+  },
+  {
+    "keyframe_type": "pre_grasp",
+    "episode_index": 0,
+    "local_index": 145,
+    "frame_index": 145,
+    "timestamp": 9.666666984558105,
+    "score": 1.0,
+    "method": "offset_before_gripper_close",
+    "images": {
+      "observation.images.camera_1": "/data/xiuchao/biArm/DEM/out_keyframes_defaultfixed/DSRFM_easy/ep_000/pre_grasp_observation_images_camera_1_frame_000145.jpg"
+    },
+    "signal_value": 0.0
+  },
+  {
+    "keyframe_type": "gripper_close",
+    "episode_index": 0,
+    "local_index": 150,
+    "frame_index": 150,
+    "timestamp": 10.0,
+    "score": 1.0,
+    "method": "largest_increase",
+    "images": {
+      "observation.images.camera_1": "/data/xiuchao/biArm/DEM/out_keyframes_defaultfixed/DSRFM_easy/ep_000/gripper_close_observation_images_camera_1_frame_000150.jpg"
+    },
+    "signal_value": 1.0
+  },
+  {
+    "keyframe_type": "post_grasp",
+    "episode_index": 0,
+    "local_index": 155,
+    "frame_index": 155,
+    "timestamp": 10.333333015441895,
+    "score": 1.0,
+    "method": "offset_after_gripper_close",
+    "images": {
+      "observation.images.camera_1": "/data/xiuchao/biArm/DEM/out_keyframes_defaultfixed/DSRFM_easy/ep_000/post_grasp_observation_images_camera_1_frame_000155.jpg"
+    },
+    "signal_value": 1.0
+  },
+  {
+    "keyframe_type": "pre_place",
+    "episode_index": 0,
+    "local_index": 263,
+    "frame_index": 263,
+    "timestamp": 17.53333282470703,
+    "score": 1.0,
+    "method": "offset_before_gripper_open",
+    "images": {
+      "observation.images.camera_1": "/data/xiuchao/biArm/DEM/out_keyframes_defaultfixed/DSRFM_easy/ep_000/pre_place_observation_images_camera_1_frame_000263.jpg"
+    },
+    "signal_value": 1.0
+  },
+  {
+    "keyframe_type": "gripper_open",
+    "episode_index": 0,
+    "local_index": 268,
+    "frame_index": 268,
+    "timestamp": 17.866666793823242,
+    "score": 1.0,
+    "method": "largest_decrease",
+    "images": {
+      "observation.images.camera_1": "/data/xiuchao/biArm/DEM/out_keyframes_defaultfixed/DSRFM_easy/ep_000/gripper_open_observation_images_camera_1_frame_000268.jpg"
+    },
+    "signal_value": 0.0
+  },
+  {
+    "keyframe_type": "post_place",
+    "episode_index": 0,
+    "local_index": 273,
+    "frame_index": 273,
+    "timestamp": 18.200000762939453,
+    "score": 1.0,
+    "method": "offset_after_gripper_open",
+    "images": {
+      "observation.images.camera_1": "/data/xiuchao/biArm/DEM/out_keyframes_defaultfixed/DSRFM_easy/ep_000/post_place_observation_images_camera_1_frame_000273.jpg"
+    },
+    "signal_value": 0.0
+  },
+  {
+    "keyframe_type": "episode_end",
+    "episode_index": 0,
+    "local_index": 337,
+    "frame_index": 337,
+    "timestamp": 22.46666717529297,
+    "score": 0.0,
+    "method": "episode_boundary",
+    "images": {
+      "observation.images.camera_1": "/data/xiuchao/biArm/DEM/out_keyframes_defaultfixed/DSRFM_easy/ep_000/episode_end_observation_images_camera_1_frame_000337.jpg"
+    },
+    "signal_value": 0.0
+  }
+]

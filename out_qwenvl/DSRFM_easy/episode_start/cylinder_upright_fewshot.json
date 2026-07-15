@@ -1,0 +1,1651 @@
+{
+  "dataset": "DSRFM_easy",
+  "dataset_root": "/data/xiuchao/biArm/DEM/data_DSRFM/ur5_easy_filtered",
+  "registry": "/data/xiuchao/biArm/DEM/datasets.yaml",
+  "prompt_mode": "cylinder_upright",
+  "shot_mode": "fewshot",
+  "keyframe_types": [
+    "episode_start"
+  ],
+  "question": "Is the cylindrical object upright after placement?",
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "keyframe_out": "/data/xiuchao/biArm/DEM/out_keyframes",
+  "demonstrations": [
+    {
+      "label": "upright",
+      "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+      "note": "The cylinder is standing upright."
+    },
+    {
+      "label": "non_upright",
+      "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+      "note": "The cylinder is not upright."
+    }
+  ],
+  "total_episodes": 45,
+  "non_straight_episodes": [
+    "ep012"
+  ],
+  "episodes": {
+    "ep000": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 0,
+      "episode_name": "ep000",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000"
+    },
+    "ep001": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_001/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 1,
+      "episode_name": "ep001",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_001"
+    },
+    "ep002": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_002/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 2,
+      "episode_name": "ep002",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_002"
+    },
+    "ep003": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_003/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 3,
+      "episode_name": "ep003",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_003"
+    },
+    "ep004": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_004/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 4,
+      "episode_name": "ep004",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_004"
+    },
+    "ep005": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_005/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 5,
+      "episode_name": "ep005",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_005"
+    },
+    "ep006": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_006/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 6,
+      "episode_name": "ep006",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_006"
+    },
+    "ep007": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_007/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 7,
+      "episode_name": "ep007",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_007"
+    },
+    "ep008": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_008/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 8,
+      "episode_name": "ep008",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_008"
+    },
+    "ep009": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_009/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 9,
+      "episode_name": "ep009",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_009"
+    },
+    "ep010": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_010/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 10,
+      "episode_name": "ep010",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_010"
+    },
+    "ep011": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_011/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 11,
+      "episode_name": "ep011",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_011"
+    },
+    "ep012": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": false,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder appears to be lying on its side, with its long axis not pointing upward from the table.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": false,
+        "confidence": "high",
+        "reason": "The cylinder appears to be lying on its side, with its long axis not pointing upward from the table."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_012/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 12,
+      "episode_name": "ep012",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_012"
+    },
+    "ep013": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_013/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 13,
+      "episode_name": "ep013",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_013"
+    },
+    "ep014": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_014/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 14,
+      "episode_name": "ep014",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_014"
+    },
+    "ep015": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_015/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 15,
+      "episode_name": "ep015",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_015"
+    },
+    "ep016": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_016/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 16,
+      "episode_name": "ep016",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_016"
+    },
+    "ep017": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_017/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 17,
+      "episode_name": "ep017",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_017"
+    },
+    "ep018": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_018/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 18,
+      "episode_name": "ep018",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_018"
+    },
+    "ep019": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_019/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 19,
+      "episode_name": "ep019",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_019"
+    },
+    "ep020": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_020/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 20,
+      "episode_name": "ep020",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_020"
+    },
+    "ep021": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_021/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 21,
+      "episode_name": "ep021",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_021"
+    },
+    "ep022": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_022/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 22,
+      "episode_name": "ep022",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_022"
+    },
+    "ep023": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_023/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 23,
+      "episode_name": "ep023",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_023"
+    },
+    "ep024": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_024/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 24,
+      "episode_name": "ep024",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_024"
+    },
+    "ep025": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_025/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 25,
+      "episode_name": "ep025",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_025"
+    },
+    "ep026": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_026/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 26,
+      "episode_name": "ep026",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_026"
+    },
+    "ep027": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_027/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 27,
+      "episode_name": "ep027",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_027"
+    },
+    "ep028": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_028/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 28,
+      "episode_name": "ep028",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_028"
+    },
+    "ep029": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_029/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 29,
+      "episode_name": "ep029",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_029"
+    },
+    "ep030": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_030/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 30,
+      "episode_name": "ep030",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_030"
+    },
+    "ep031": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_031/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 31,
+      "episode_name": "ep031",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_031"
+    },
+    "ep032": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_032/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 32,
+      "episode_name": "ep032",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_032"
+    },
+    "ep033": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_033/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 33,
+      "episode_name": "ep033",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_033"
+    },
+    "ep034": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_034/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 34,
+      "episode_name": "ep034",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_034"
+    },
+    "ep035": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_035/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 35,
+      "episode_name": "ep035",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_035"
+    },
+    "ep036": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_036/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 36,
+      "episode_name": "ep036",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_036"
+    },
+    "ep037": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_037/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 37,
+      "episode_name": "ep037",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_037"
+    },
+    "ep038": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_038/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 38,
+      "episode_name": "ep038",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_038"
+    },
+    "ep039": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_039/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 39,
+      "episode_name": "ep039",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_039"
+    },
+    "ep040": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_040/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 40,
+      "episode_name": "ep040",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_040"
+    },
+    "ep041": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_041/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 41,
+      "episode_name": "ep041",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_041"
+    },
+    "ep042": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_042/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 42,
+      "episode_name": "ep042",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_042"
+    },
+    "ep043": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_043/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 43,
+      "episode_name": "ep043",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_043"
+    },
+    "ep044": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_044/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 44,
+      "episode_name": "ep044",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_044"
+    }
+  }
+}

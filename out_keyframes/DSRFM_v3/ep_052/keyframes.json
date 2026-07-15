@@ -1,0 +1,15 @@
+[
+  {
+    "keyframe_type": "episode_start",
+    "episode_index": 52,
+    "local_index": 0,
+    "frame_index": 0,
+    "timestamp": 0.0,
+    "score": 0.0,
+    "method": "episode_boundary",
+    "images": {
+      "observation.images.camera_1": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_v3/ep_052/episode_start_observation_images_camera_1_frame_000000.jpg"
+    },
+    "signal_value": 0.0
+  }
+]

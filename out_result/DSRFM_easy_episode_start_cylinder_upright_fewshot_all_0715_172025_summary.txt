@@ -1,0 +1,398 @@
+[run_time] 2026-07-15T17:20:25+08:00
+[dataset] DSRFM_easy
+[model] Qwen/Qwen2.5-VL-7B-Instruct
+[prompt_mode] cylinder_upright
+[shot_mode] fewshot
+[episodes] 45
+[inference_seconds_total] 72.651
+[inference_seconds_per_frame_avg] 1.614
+[non_straight_episodes] ['ep012']
+[episode] ep000
+[episode_inference_seconds] 2.164
+[episode_inference_seconds_per_frame] 2.164
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep001
+[episode_inference_seconds] 1.611
+[episode_inference_seconds_per_frame] 1.611
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep002
+[episode_inference_seconds] 1.597
+[episode_inference_seconds_per_frame] 1.597
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep003
+[episode_inference_seconds] 1.608
+[episode_inference_seconds_per_frame] 1.608
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep004
+[episode_inference_seconds] 1.466
+[episode_inference_seconds_per_frame] 1.466
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+[episode] ep005
+[episode_inference_seconds] 1.606
+[episode_inference_seconds_per_frame] 1.606
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep006
+[episode_inference_seconds] 1.609
+[episode_inference_seconds_per_frame] 1.609
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep007
+[episode_inference_seconds] 1.604
+[episode_inference_seconds_per_frame] 1.604
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep008
+[episode_inference_seconds] 1.609
+[episode_inference_seconds_per_frame] 1.609
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep009
+[episode_inference_seconds] 1.618
+[episode_inference_seconds_per_frame] 1.618
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep010
+[episode_inference_seconds] 1.666
+[episode_inference_seconds_per_frame] 1.666
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep011
+[episode_inference_seconds] 1.605
+[episode_inference_seconds_per_frame] 1.605
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep012
+[episode_inference_seconds] 1.510
+[episode_inference_seconds_per_frame] 1.510
+{
+    "is_upright": false,
+    "confidence": "low"
+}
+[episode] ep013
+[episode_inference_seconds] 1.474
+[episode_inference_seconds_per_frame] 1.474
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+[episode] ep014
+[episode_inference_seconds] 1.626
+[episode_inference_seconds_per_frame] 1.626
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep015
+[episode_inference_seconds] 1.617
+[episode_inference_seconds_per_frame] 1.617
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep016
+[episode_inference_seconds] 1.479
+[episode_inference_seconds_per_frame] 1.479
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+[episode] ep017
+[episode_inference_seconds] 1.619
+[episode_inference_seconds_per_frame] 1.619
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep018
+[episode_inference_seconds] 1.713
+[episode_inference_seconds_per_frame] 1.713
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep019
+[episode_inference_seconds] 1.621
+[episode_inference_seconds_per_frame] 1.621
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep020
+[episode_inference_seconds] 1.617
+[episode_inference_seconds_per_frame] 1.617
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep021
+[episode_inference_seconds] 1.625
+[episode_inference_seconds_per_frame] 1.625
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep022
+[episode_inference_seconds] 1.773
+[episode_inference_seconds_per_frame] 1.773
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep023
+[episode_inference_seconds] 1.486
+[episode_inference_seconds_per_frame] 1.486
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+[episode] ep024
+[episode_inference_seconds] 1.611
+[episode_inference_seconds_per_frame] 1.611
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep025
+[episode_inference_seconds] 1.524
+[episode_inference_seconds_per_frame] 1.524
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+[episode] ep026
+[episode_inference_seconds] 1.627
+[episode_inference_seconds_per_frame] 1.627
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep027
+[episode_inference_seconds] 1.621
+[episode_inference_seconds_per_frame] 1.621
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep028
+[episode_inference_seconds] 1.477
+[episode_inference_seconds_per_frame] 1.477
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+[episode] ep029
+[episode_inference_seconds] 1.485
+[episode_inference_seconds_per_frame] 1.485
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+[episode] ep030
+[episode_inference_seconds] 1.624
+[episode_inference_seconds_per_frame] 1.624
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep031
+[episode_inference_seconds] 1.617
+[episode_inference_seconds_per_frame] 1.617
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep032
+[episode_inference_seconds] 1.631
+[episode_inference_seconds_per_frame] 1.631
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep033
+[episode_inference_seconds] 1.614
+[episode_inference_seconds_per_frame] 1.614
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep034
+[episode_inference_seconds] 1.629
+[episode_inference_seconds_per_frame] 1.629
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep035
+[episode_inference_seconds] 1.611
+[episode_inference_seconds_per_frame] 1.611
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep036
+[episode_inference_seconds] 1.625
+[episode_inference_seconds_per_frame] 1.625
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep037
+[episode_inference_seconds] 1.611
+[episode_inference_seconds_per_frame] 1.611
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep038
+[episode_inference_seconds] 1.632
+[episode_inference_seconds_per_frame] 1.632
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep039
+[episode_inference_seconds] 1.623
+[episode_inference_seconds_per_frame] 1.623
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep040
+[episode_inference_seconds] 1.620
+[episode_inference_seconds_per_frame] 1.620
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep041
+[episode_inference_seconds] 1.689
+[episode_inference_seconds_per_frame] 1.689
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep042
+[episode_inference_seconds] 1.616
+[episode_inference_seconds_per_frame] 1.616
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep043
+[episode_inference_seconds] 1.628
+[episode_inference_seconds_per_frame] 1.628
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```
+[episode] ep044
+[episode_inference_seconds] 1.614
+[episode_inference_seconds_per_frame] 1.614
+```json
+{
+    "is_upright": true,
+    "confidence": "high"
+}
+```

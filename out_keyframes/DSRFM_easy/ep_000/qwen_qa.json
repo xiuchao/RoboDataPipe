@@ -1,0 +1,17 @@
+{
+  "question": "Describe what the robot is doing in these keyframe images.",
+  "answer": "The robot is picking up the object.",
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "images": [
+    {
+      "keyframe_type": "episode_start",
+      "camera": "observation.images.camera_1",
+      "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000/episode_start_observation_images_camera_1_frame_000000.jpg"
+    },
+    {
+      "keyframe_type": "episode_start",
+      "camera": "observation.images.camera_2",
+      "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000/episode_start_observation_images_camera_2_frame_000000.jpg"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "dataset": "DSRFM_easy",
+  "dataset_root": "/data/xiuchao/biArm/DEM/data_DSRFM/ur5_easy_filtered",
+  "registry": "/data/xiuchao/biArm/DEM/datasets.yaml",
+  "prompt_mode": "cylinder_upright",
+  "shot_mode": "fewshot",
+  "keyframe_types": [
+    "episode_start"
+  ],
+  "question": "Is the cylindrical object upright after placement?",
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "keyframe_out": "/data/xiuchao/biArm/DEM/out_keyframes",
+  "demonstrations": [
+    {
+      "label": "upright",
+      "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+      "note": "The cylinder is standing upright."
+    },
+    {
+      "label": "non_upright",
+      "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+      "note": "The cylinder is not upright."
+    }
+  ],
+  "total_episodes": 1,
+  "non_straight_episodes": [],
+  "episodes": {
+    "ep000": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": "Is the cylindrical object upright after placement?",
+      "answer": "```json\n{\n  \"is_upright\": true,\n  \"confidence\": \"high\",\n  \"reason\": \"The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal.\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high",
+        "reason": "The cylinder's long axis points upward, and its circular top/bottom faces appear horizontal."
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/yes.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/not.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 0,
+      "episode_name": "ep000",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000"
+    }
+  }
+}

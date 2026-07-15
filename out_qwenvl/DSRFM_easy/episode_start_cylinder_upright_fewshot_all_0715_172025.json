@@ -1,0 +1,2434 @@
+{
+  "dataset": "DSRFM_easy",
+  "dataset_root": "/data/xiuchao/biArm/DEM/data_DSRFM/ur5_easy_filtered",
+  "registry": "/data/xiuchao/biArm/DEM/datasets.yaml",
+  "prompt_mode": "cylinder_upright",
+  "shot_mode": "fewshot",
+  "keyframe_types": [
+    "episode_start"
+  ],
+  "question": null,
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "keyframe_out": "/data/xiuchao/biArm/DEM/out_keyframes",
+  "demonstrations": [
+    {
+      "label": "upright",
+      "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+      "note": "The cylinder is standing upright."
+    },
+    {
+      "label": "non_upright",
+      "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+      "note": "The cylinder is not upright."
+    },
+    {
+      "label": "non_upright",
+      "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+      "note": "The cylinder is not upright."
+    },
+    {
+      "label": "non_upright",
+      "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+      "note": "The cylinder is not upright."
+    },
+    {
+      "label": "non_upright",
+      "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+      "note": "The cylinder is not upright."
+    }
+  ],
+  "total_episodes": 45,
+  "inference_seconds_total": 72.65144376456738,
+  "inference_seconds_per_frame_avg": 1.6144765281014972,
+  "non_straight_episodes": [
+    "ep012"
+  ],
+  "episodes": {
+    "ep000": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 2.164155200123787,
+      "inference_seconds_per_frame": 2.164155200123787,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 0,
+      "episode_name": "ep000",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000"
+    },
+    "ep001": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_001/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.610690850764513,
+      "inference_seconds_per_frame": 1.610690850764513,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 1,
+      "episode_name": "ep001",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_001"
+    },
+    "ep002": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_002/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.5968596749007702,
+      "inference_seconds_per_frame": 1.5968596749007702,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 2,
+      "episode_name": "ep002",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_002"
+    },
+    "ep003": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_003/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6078089587390423,
+      "inference_seconds_per_frame": 1.6078089587390423,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 3,
+      "episode_name": "ep003",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_003"
+    },
+    "ep004": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_004/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.4662014562636614,
+      "inference_seconds_per_frame": 1.4662014562636614,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 4,
+      "episode_name": "ep004",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_004"
+    },
+    "ep005": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_005/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6061218231916428,
+      "inference_seconds_per_frame": 1.6061218231916428,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 5,
+      "episode_name": "ep005",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_005"
+    },
+    "ep006": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_006/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.609202928841114,
+      "inference_seconds_per_frame": 1.609202928841114,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 6,
+      "episode_name": "ep006",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_006"
+    },
+    "ep007": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_007/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6037173327058554,
+      "inference_seconds_per_frame": 1.6037173327058554,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 7,
+      "episode_name": "ep007",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_007"
+    },
+    "ep008": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_008/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6091098263859749,
+      "inference_seconds_per_frame": 1.6091098263859749,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 8,
+      "episode_name": "ep008",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_008"
+    },
+    "ep009": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_009/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6178881395608187,
+      "inference_seconds_per_frame": 1.6178881395608187,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 9,
+      "episode_name": "ep009",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_009"
+    },
+    "ep010": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_010/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6661292929202318,
+      "inference_seconds_per_frame": 1.6661292929202318,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 10,
+      "episode_name": "ep010",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_010"
+    },
+    "ep011": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_011/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.605151604861021,
+      "inference_seconds_per_frame": 1.605151604861021,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 11,
+      "episode_name": "ep011",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_011"
+    },
+    "ep012": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "{\n    \"is_upright\": false,\n    \"confidence\": \"low\"\n}",
+      "parsed_answer": {
+        "is_upright": false,
+        "confidence": "low"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_012/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.50950719229877,
+      "inference_seconds_per_frame": 1.50950719229877,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 12,
+      "episode_name": "ep012",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_012"
+    },
+    "ep013": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_013/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.4736548084765673,
+      "inference_seconds_per_frame": 1.4736548084765673,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 13,
+      "episode_name": "ep013",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_013"
+    },
+    "ep014": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_014/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6264320369809866,
+      "inference_seconds_per_frame": 1.6264320369809866,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 14,
+      "episode_name": "ep014",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_014"
+    },
+    "ep015": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_015/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6172830276191235,
+      "inference_seconds_per_frame": 1.6172830276191235,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 15,
+      "episode_name": "ep015",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_015"
+    },
+    "ep016": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_016/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.479302940890193,
+      "inference_seconds_per_frame": 1.479302940890193,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 16,
+      "episode_name": "ep016",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_016"
+    },
+    "ep017": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_017/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6190328989177942,
+      "inference_seconds_per_frame": 1.6190328989177942,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 17,
+      "episode_name": "ep017",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_017"
+    },
+    "ep018": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_018/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.7127325888723135,
+      "inference_seconds_per_frame": 1.7127325888723135,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 18,
+      "episode_name": "ep018",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_018"
+    },
+    "ep019": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_019/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6207930780947208,
+      "inference_seconds_per_frame": 1.6207930780947208,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 19,
+      "episode_name": "ep019",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_019"
+    },
+    "ep020": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_020/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6174257844686508,
+      "inference_seconds_per_frame": 1.6174257844686508,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 20,
+      "episode_name": "ep020",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_020"
+    },
+    "ep021": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_021/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6252425070852041,
+      "inference_seconds_per_frame": 1.6252425070852041,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 21,
+      "episode_name": "ep021",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_021"
+    },
+    "ep022": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_022/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.7725733984261751,
+      "inference_seconds_per_frame": 1.7725733984261751,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 22,
+      "episode_name": "ep022",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_022"
+    },
+    "ep023": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_023/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.485942693427205,
+      "inference_seconds_per_frame": 1.485942693427205,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 23,
+      "episode_name": "ep023",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_023"
+    },
+    "ep024": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_024/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6109871454536915,
+      "inference_seconds_per_frame": 1.6109871454536915,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 24,
+      "episode_name": "ep024",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_024"
+    },
+    "ep025": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_025/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.5243672765791416,
+      "inference_seconds_per_frame": 1.5243672765791416,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 25,
+      "episode_name": "ep025",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_025"
+    },
+    "ep026": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_026/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6268325373530388,
+      "inference_seconds_per_frame": 1.6268325373530388,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 26,
+      "episode_name": "ep026",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_026"
+    },
+    "ep027": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_027/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.621096856892109,
+      "inference_seconds_per_frame": 1.621096856892109,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 27,
+      "episode_name": "ep027",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_027"
+    },
+    "ep028": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_028/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.4773899521678686,
+      "inference_seconds_per_frame": 1.4773899521678686,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 28,
+      "episode_name": "ep028",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_028"
+    },
+    "ep029": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_029/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.484971946105361,
+      "inference_seconds_per_frame": 1.484971946105361,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 29,
+      "episode_name": "ep029",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_029"
+    },
+    "ep030": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_030/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.623747007921338,
+      "inference_seconds_per_frame": 1.623747007921338,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 30,
+      "episode_name": "ep030",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_030"
+    },
+    "ep031": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_031/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6172345206141472,
+      "inference_seconds_per_frame": 1.6172345206141472,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 31,
+      "episode_name": "ep031",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_031"
+    },
+    "ep032": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_032/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6312957927584648,
+      "inference_seconds_per_frame": 1.6312957927584648,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 32,
+      "episode_name": "ep032",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_032"
+    },
+    "ep033": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_033/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6135189346969128,
+      "inference_seconds_per_frame": 1.6135189346969128,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 33,
+      "episode_name": "ep033",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_033"
+    },
+    "ep034": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_034/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.629223169758916,
+      "inference_seconds_per_frame": 1.629223169758916,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 34,
+      "episode_name": "ep034",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_034"
+    },
+    "ep035": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_035/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6106917764991522,
+      "inference_seconds_per_frame": 1.6106917764991522,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 35,
+      "episode_name": "ep035",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_035"
+    },
+    "ep036": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_036/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.624526346102357,
+      "inference_seconds_per_frame": 1.624526346102357,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 36,
+      "episode_name": "ep036",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_036"
+    },
+    "ep037": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_037/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6114944517612457,
+      "inference_seconds_per_frame": 1.6114944517612457,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 37,
+      "episode_name": "ep037",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_037"
+    },
+    "ep038": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_038/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.631502564996481,
+      "inference_seconds_per_frame": 1.631502564996481,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 38,
+      "episode_name": "ep038",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_038"
+    },
+    "ep039": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_039/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.623189203441143,
+      "inference_seconds_per_frame": 1.623189203441143,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 39,
+      "episode_name": "ep039",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_039"
+    },
+    "ep040": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_040/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6198766492307186,
+      "inference_seconds_per_frame": 1.6198766492307186,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 40,
+      "episode_name": "ep040",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_040"
+    },
+    "ep041": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_041/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.688762690871954,
+      "inference_seconds_per_frame": 1.688762690871954,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 41,
+      "episode_name": "ep041",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_041"
+    },
+    "ep042": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_042/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6164969820529222,
+      "inference_seconds_per_frame": 1.6164969820529222,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 42,
+      "episode_name": "ep042",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_042"
+    },
+    "ep043": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_043/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6276576574891806,
+      "inference_seconds_per_frame": 1.6276576574891806,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 43,
+      "episode_name": "ep043",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_043"
+    },
+    "ep044": {
+      "prompt_mode": "cylinder_upright",
+      "keyframe_types": [
+        "episode_start"
+      ],
+      "question": null,
+      "answer": "```json\n{\n    \"is_upright\": true,\n    \"confidence\": \"high\"\n}\n```",
+      "parsed_answer": {
+        "is_upright": true,
+        "confidence": "high"
+      },
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "images": [
+        {
+          "keyframe_type": "episode_start",
+          "camera": "observation.images.camera_1",
+          "path": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_044/episode_start_observation_images_camera_1_frame_000000.jpg"
+        }
+      ],
+      "frame_count": 1,
+      "inference_seconds": 1.6136202570050955,
+      "inference_seconds_per_frame": 1.6136202570050955,
+      "demonstrations": [
+        {
+          "label": "upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg",
+          "note": "The cylinder is standing upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_1.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_2.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_3.jpg",
+          "note": "The cylinder is not upright."
+        },
+        {
+          "label": "non_upright",
+          "path": "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying/lying_4.jpg",
+          "note": "The cylinder is not upright."
+        }
+      ],
+      "episode_index": 44,
+      "episode_name": "ep044",
+      "keyframe_dir": "/data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_044"
+    }
+  },
+  "run_time": "2026-07-15T17:20:25+08:00"
+}
