@@ -1,4 +1,4 @@
-# DEM VLM Pipeline
+# Robot Data Pipeline
 
 Utilities for extracting robot episode keyframes and judging task outcomes with Qwen2.5-VL.
 
