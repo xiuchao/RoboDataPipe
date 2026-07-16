@@ -4,17 +4,24 @@ import argparse
 import json
 from datetime import datetime
 from pathlib import Path
+import sys
 from typing import Any
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+	sys.path.insert(0, str(PROJECT_ROOT))
+
 from dataloader import DATASET_REGISTRY, load_lerobot_dataset
-from keyframes import build_episode_index, extract_keyframes_for_episode, save_keyframes_json
-from qwen_vl_config import DEFAULT_MODEL, PROMPT_MODES, resolve_question
-from qwen_vl_qa import answer_question_about_keyframes, collect_demonstrations, load_qwen_model
+from project_paths import KEYFRAME_OUTPUT_DIR, QWENVL_OUTPUT_DIR, RESULT_OUTPUT_DIR
+from robot_events.keyframes import build_episode_index, extract_keyframes_for_episode, gripper_signal_spec_from_config, save_keyframes_json
+from robot_events.registry import resolve_episode_cameras
+from vlm.qwen_vl_config import DEFAULT_MODEL, PROMPT_MODES, resolve_question
+from vlm.qwen_vl_qa import answer_question_about_keyframes, collect_demonstrations, load_qwen_model
 from tqdm import tqdm
 
-DEFAULT_KEYFRAME_OUT = "/data/xiuchao/biArm/DEM/out_keyframes"
-DEFAULT_RESULT_JSON_OUT = "/data/xiuchao/biArm/DEM/out_qwenvl"
-DEFAULT_RESULT_TEXT_OUT = "/data/xiuchao/biArm/DEM/out_result"
+DEFAULT_KEYFRAME_OUT = str(KEYFRAME_OUTPUT_DIR)
+DEFAULT_RESULT_JSON_OUT = str(QWENVL_OUTPUT_DIR)
+DEFAULT_RESULT_TEXT_OUT = str(RESULT_OUTPUT_DIR)
 
 def parse_args() -> argparse.Namespace:
 	parser = argparse.ArgumentParser()
@@ -196,20 +203,6 @@ def episode_result_key(episode_index: int) -> str:
 def episode_output_dir(keyframe_out: str | Path, dataset_name: str, episode_index: int) -> Path:
 	return Path(keyframe_out) / dataset_name / f"ep_{episode_index:03d}"
 
-def resolve_cameras(cfg: dict[str, Any], cameras: list[str] | None) -> list[str]:
-	if cameras is not None:
-		return cameras
-
-	cfg_cameras = cfg.get("cameras")
-	if cfg_cameras is not None:
-		return list(cfg_cameras)
-
-	default_camera = cfg.get("default_camera")
-	if default_camera is not None:
-		return [default_camera]
-
-	raise ValueError("No camera specified. Use --camera or set cameras/default_camera in datasets.yaml")
-
 def resolve_keyframes_for_pipeline(keyframe_types: list[str] | None, prompt_mode: str) -> list[str]:
 	if keyframe_types is not None:
 		return keyframe_types
@@ -290,7 +283,6 @@ def collect_dataset_level_information(
 	smooth_window: int = 1,
 ) -> dict[str, Any]:
 	ds, cfg = load_lerobot_dataset(dataset_name, registry_path=registry_path)
-	resolved_cameras = resolve_cameras(cfg, cameras)
 	resolved_keyframe_types = resolve_keyframes_for_pipeline(keyframe_types, prompt_mode)
 	resolved_question = resolve_question(question, prompt_mode)
 	episode_indices = resolve_episode_indices(ds, episodes)
@@ -304,8 +296,16 @@ def collect_dataset_level_information(
 
 	for episode_index in tqdm(episode_indices, desc="Episodes", unit="ep"):
 		episode_key = episode_result_key(episode_index)
+		resolved_cameras, motion = resolve_episode_cameras(
+			ds,
+			cfg,
+			episode_index,
+			cameras,
+			keyframe_type=resolved_keyframe_types[-1] if resolved_keyframe_types else None,
+		)
 		keyframe_dir = episode_output_dir(keyframe_out, dataset_name, episode_index)
 		if not extracted_keyframes_ready(keyframe_dir, resolved_keyframe_types, resolved_cameras):
+			gripper_signal_spec = gripper_signal_spec_from_config(cfg)
 			keyframes = extract_keyframes_for_episode(
 				ds=ds,
 				dataset_name=dataset_name,
@@ -313,9 +313,7 @@ def collect_dataset_level_information(
 				keyframe_types=resolved_keyframe_types,
 				cameras=resolved_cameras,
 				out_dir=keyframe_dir,
-				signal_source=cfg.get("signal_source", "observation.state"),
-				gripper_dim=cfg.get("gripper_dim", -1),
-				direction=cfg.get("direction", "decrease"),
+				gripper_signal_spec=gripper_signal_spec,
 				offset=offset,
 				smooth_window=smooth_window,
 			)
@@ -338,6 +336,11 @@ def collect_dataset_level_information(
 		episode_result["episode_index"] = episode_index
 		episode_result["episode_name"] = episode_key
 		episode_result["keyframe_dir"] = str(keyframe_dir)
+		episode_result["selected_cameras"] = resolved_cameras
+		if motion is not None:
+			episode_result["moving_arm"] = motion["moving_arm"]
+			episode_result["left_score"] = motion["left_score"]
+			episode_result["right_score"] = motion["right_score"]
 		results[episode_key] = episode_result
 		total_inference_seconds += float(episode_result["inference_seconds"])
 		total_frame_count += int(episode_result["frame_count"])

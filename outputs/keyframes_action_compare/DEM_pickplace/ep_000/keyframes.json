@@ -1,0 +1,16 @@
+[
+  {
+    "keyframe_type": "gripper_close",
+    "episode_index": 0,
+    "local_index": 6,
+    "frame_index": 6,
+    "timestamp": 0.6000000238418579,
+    "score": 1.0,
+    "method": "largest_increase",
+    "images": {
+      "observation.images.camera_top": "/data/xiuchao/biArm/DEM/outputs/keyframes_action_compare/DEM_pickplace/ep_000/gripper_close_observation_images_camera_top_frame_000006.jpg",
+      "observation.images.camera_left": "/data/xiuchao/biArm/DEM/outputs/keyframes_action_compare/DEM_pickplace/ep_000/gripper_close_observation_images_camera_left_frame_000006.jpg"
+    },
+    "signal_value": 1.0
+  }
+]

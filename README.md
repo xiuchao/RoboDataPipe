@@ -36,9 +36,9 @@ The large local dataset folders are intentionally ignored by git:
 
 Generated outputs are also ignored:
 
-- `out_keyframes/`
-- `out_qwenvl/`
-- `out_result/`
+- `outputs/keyframes/`
+- `outputs/qwenvl/`
+- `outputs/result/`
 
 ## Few-Shot Annotations
 
@@ -62,14 +62,14 @@ python3.12 extract_keyframes.py \
   --keyframes episode_start \
   --camera observation.images.camera_1 \
   --camera observation.images.camera_2 \
-  --out /data/xiuchao/biArm/DEM/out_keyframes
+  --out /data/xiuchao/biArm/DEM/outputs/keyframes
 ```
 
 Run frame QA on one extracted episode:
 
 ```bash
 python3.12 qwen_vl_qa.py \
-  --keyframe-dir /data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000 \
+  --keyframe-dir /data/xiuchao/biArm/DEM/outputs/keyframes/DSRFM_easy/ep_000 \
   --prompt-mode cylinder_upright \
   --shot-mode fewshot \
   --camera observation.images.camera_1 \

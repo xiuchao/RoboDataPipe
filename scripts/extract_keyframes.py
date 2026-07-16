@@ -2,9 +2,16 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import sys
 
-from dataloader import load_lerobot_dataset
-from keyframes import extract_keyframes_for_episode, save_keyframes_json
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from dataloader import DATASET_REGISTRY, load_lerobot_dataset
+from project_paths import KEYFRAME_OUTPUT_DIR
+from robot_events.keyframes import extract_keyframes_for_episode, gripper_signal_spec_from_config, save_keyframes_json
+from robot_events.registry import resolve_episode_cameras
 
 
 DEFAULT_KEYFRAMES = [
@@ -17,15 +24,35 @@ DEFAULT_KEYFRAMES = [
     "post_place",
     "episode_end",
 ]
+DEFAULT_KEYFRAME_OUT = str(KEYFRAME_OUTPUT_DIR)
 
+
+def resolve_camera_context_keyframe(keyframe_types: list[str]) -> str | None:
+    preferred_order = [
+        "gripper_close",
+        "pre_grasp",
+        "post_grasp",
+        "gripper_open",
+        "pre_place",
+        "post_place",
+        "episode_end",
+        "episode_start",
+    ]
+    wanted = set(keyframe_types)
+    for keyframe_type in preferred_order:
+        if keyframe_type in wanted:
+            return keyframe_type
+    return keyframe_types[0] if keyframe_types else None
 
 def normalize_output_root(out: str | Path) -> Path:
     out_path = Path(out)
     for prefix in ("output_keyframes_", "out_keyframes_"):
         if out_path.name.startswith(prefix):
             suffix = out_path.name.removeprefix(prefix)
-            normalized_root = out_path.parent / "output_keyframes"
+            normalized_root = Path(DEFAULT_KEYFRAME_OUT)
             return normalized_root / suffix if suffix else normalized_root
+    if out_path.name == "out_keyframes":
+        return Path(DEFAULT_KEYFRAME_OUT)
     return out_path
 
 
@@ -39,7 +66,7 @@ def parse_args():
     )
     parser.add_argument(
         "--registry",
-        default="/data/xiuchao/biArm/DEM/datasets.yaml",
+        default=DATASET_REGISTRY,
         help="Path to datasets.yaml",
     )
     parser.add_argument(
@@ -59,11 +86,11 @@ def parse_args():
         action="append",
         dest="cameras",
         default=None,
-        help="Camera key. Can be repeated.",
+        help="Camera key. Can be repeated. Use --camera auto to force adapter-based camera selection.",
     )
     parser.add_argument(
         "--out",
-        default="/data/xiuchao/biArm/DEM/output_keyframes",
+        default=DEFAULT_KEYFRAME_OUT,
         help="Output directory",
     )
     parser.add_argument(
@@ -82,6 +109,12 @@ def parse_args():
         choices=["decrease", "increase"],
         default=None,
         help="For gripper_close: whether close is signal decrease or increase. Defaults to datasets.yaml if set.",
+    )
+    parser.add_argument(
+        "--gripper-side",
+        choices=["left", "right"],
+        default=None,
+        help="Optional gripper side for bimanual datasets. Defaults to the config-preferred index order.",
     )
     parser.add_argument(
         "--offset",
@@ -107,20 +140,28 @@ if __name__ == "__main__":
         registry_path=args.registry,
     )
 
-    cameras = args.cameras
-    if cameras is None:
-        cameras = cfg.get("cameras")
-    if cameras is None:
-        default_camera = cfg.get("default_camera")
-        if default_camera is None:
-            raise ValueError(
-                "No camera specified. Use --camera or set cameras/default_camera in datasets.yaml"
-            )
-        cameras = [default_camera]
+    requested_cameras = args.cameras
+    if requested_cameras is not None and "auto" in requested_cameras:
+        if len(requested_cameras) != 1:
+            raise ValueError("--camera auto cannot be combined with explicit camera names")
+        requested_cameras = None
 
-    signal_source = args.signal_source or cfg.get("signal_source", "observation.state")
-    gripper_dim = args.gripper_dim if args.gripper_dim is not None else cfg.get("gripper_dim", -1)
-    direction = args.direction or cfg.get("direction", "decrease")
+    camera_context_keyframe = resolve_camera_context_keyframe(args.keyframes)
+    cameras, motion = resolve_episode_cameras(
+        ds,
+        cfg,
+        args.episode,
+        requested_cameras,
+        keyframe_type=camera_context_keyframe,
+    )
+
+    gripper_signal_spec = gripper_signal_spec_from_config(
+        cfg,
+        source=args.signal_source,
+        side=args.gripper_side,
+        dim=args.gripper_dim,
+        close_direction=args.direction,
+    )
 
     output_root = normalize_output_root(args.out)
     out_dir = output_root / args.dataset / f"ep_{args.episode:03d}"
@@ -133,9 +174,7 @@ if __name__ == "__main__":
         keyframe_types=args.keyframes,
         cameras=cameras,
         out_dir=out_dir,
-        signal_source=signal_source,
-        gripper_dim=gripper_dim,
-        direction=direction,
+        gripper_signal_spec=gripper_signal_spec,
         offset=args.offset,
         smooth_window=args.smooth_window,
     )
@@ -146,6 +185,13 @@ if __name__ == "__main__":
     print(f"[done] saved {len(keyframes)} keyframes")
     print(f"[out]  {out_dir}")
     print(f"[json] {json_path}")
+    if motion is not None:
+        print(f"[moving_arm] {motion['moving_arm']}")
+        print(f"[left_score] {motion['left_score']}")
+        print(f"[right_score] {motion['right_score']}")
+        print(f"[camera_context_keyframe] {camera_context_keyframe}")
+        print(f"[selected_cameras] {cameras}")
+    print(f"[gripper_signal_spec] {gripper_signal_spec}")
 
     for kf in keyframes:
         print(

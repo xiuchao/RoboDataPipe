@@ -4,11 +4,11 @@ python3.12 extract_keyframes.py \
   --keyframes episode_start \
   --camera observation.images.camera_1 \
   --camera observation.images.camera_2 \
-  --out /data/xiuchao/biArm/DEM/out_keyframes
+  --out /data/xiuchao/biArm/DEM/outputs/keyframes
 
 
 python3.12 qwen_vl_qa.py \
-  --keyframe-dir /data/xiuchao/biArm/DEM/out_keyframes/DSRFM_easy/ep_000 \
+  --keyframe-dir /data/xiuchao/biArm/DEM/outputs/keyframes/DSRFM_easy/ep_000 \
   --camera observation.images.camera_1 \
   --question "is the cylindrical object upstraight? Answer with yes or no." 
 
@@ -41,15 +41,22 @@ python3.12 robo_dataset_pipeline.py \
   --camera observation.images.camera_1 \
   --max-new-tokens 120
 
-python3.12 robo_dataset_pipeline.py \
-  --dataset DSRFM_v3 \
-  --keyframes episode_start \
+
+# ======================================================
+# for DEM_pickplace, after resolving the embodiment issue
+python3.12 scripts/extract_keyframes.py \
+  --dataset DEM_pickplace \
   --episode 0 \
-  --prompt-mode cylinder_upright \
-  --shot-mode fewshot \
-  --camera observation.images.camera_1 \
-  --max-new-tokens 120
+  --keyframes gripper_close \
+  --camera observation.images.camera_top \
+  --camera observation.images.camera_left \
+  --out /data/xiuchao/biArm/DEM/outputs/keyframes
 
-
-
-
+python3.12 scripts/extract_keyframes.py \
+  --dataset DEM_pickplace \
+  --episode 0 \
+  --keyframes gripper_open \
+  --camera observation.images.camera_top \
+  --camera observation.images.camera_left \
+  --camera observation.images.camera_right \
+  --out /data/xiuchao/biArm/DEM/outputs/keyframes

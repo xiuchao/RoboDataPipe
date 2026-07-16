@@ -2,14 +2,11 @@ from pathlib import Path
 import yaml
 from huggingface_hub import snapshot_download
 from lerobot.datasets.lerobot_dataset import LeRobotDataset
+from project_paths import DATASET_REGISTRY_PATH
 
 
-DATASET_REGISTRY = "/data/xiuchao/biArm/DEM/datasets.yaml"
+DATASET_REGISTRY = str(DATASET_REGISTRY_PATH)
 REQUIRED_DIRS = ["data", "meta", "videos"]
-
-DATASET_ALIASES = {
-    "ur5_easy": "DSRFM_easy",
-}
 
 
 def is_lerobot_dataset_downloaded(root: str | Path, require_videos: bool = True) -> bool:
@@ -52,8 +49,6 @@ def ensure_lerobot_dataset_local(
 ):
     registry = load_registry(registry_path)
 
-    name = DATASET_ALIASES.get(name, name)
-
     if name not in registry:
         available = ", ".join(registry.keys())
         raise KeyError(f"Unknown dataset '{name}'. Available: {available}")
@@ -90,7 +85,6 @@ def load_lerobot_dataset(
     force_download: bool = False,
     require_videos: bool = True,
 ):
-    name = DATASET_ALIASES.get(name, name)
 
     cfg = ensure_lerobot_dataset_local(
         name,
@@ -108,7 +102,7 @@ def load_lerobot_dataset(
 
 if __name__ == "__main__":
 
-    ds, cfg = load_lerobot_dataset("DSRFM_v3") #"DEM_handposition"
+    ds, cfg = load_lerobot_dataset("DEM_pickplace")  #"DSRFM_v3", "DEM_handposition"
     print(len(ds))
     item = ds[0]
     breakpoint()

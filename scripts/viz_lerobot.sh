@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REGISTRY="${DEM_DATASETS_YAML:-/data/xiuchao/biArm/DEM/datasets.yaml}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+REGISTRY="${DEM_DATASETS_YAML:-$PROJECT_ROOT/datasets.yaml}"
 
 usage() {
     echo "Usage:"

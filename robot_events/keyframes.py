@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import numpy as np
 from PIL import Image
@@ -104,26 +104,153 @@ def _largest_change(signal: np.ndarray, direction: str) -> Event:
 		signal_after=float(signal[local_index]),
 	)
 
-
-def detect_gripper_close(signal: np.ndarray, direction: str = "decrease") -> Event:
-	signal = np.asarray(signal, dtype=float)
-	event = _largest_change(signal, direction)
-	return Event("gripper_close", event.local_index, event.score, event.method, event.signal_before, event.signal_after)
+Direction = Literal["increase", "decrease"]
 
 
-def detect_gripper_open(signal: np.ndarray, direction: str = "increase") -> Event:
-	signal = np.asarray(signal, dtype=float)
-	event = _largest_change(signal, direction)
-	return Event("gripper_open", event.local_index, event.score, event.method, event.signal_before, event.signal_after)
+@dataclass(frozen=True)
+class GripperSignalSpec:
+    source: str
+    dim: int
+    close_direction: Direction
+    open_direction: Direction
 
 
-def gripper_signal(items: list[dict[str, Any]], source: str = "observation.state", dim: int = -1) -> np.ndarray:
+def _opposite_direction(direction: Direction) -> Direction:
+	return "increase" if direction == "decrease" else "decrease"
+
+
+def resolve_gripper_signal_spec(
+	spec: GripperSignalSpec | None = None,
+	*,
+	signal_source: str = "observation.state",
+	gripper_dim: int = -1,
+	close_direction: Direction = "decrease",
+	open_direction: Direction | None = None,
+) -> GripperSignalSpec:
+	if spec is not None:
+		return spec
+
+	return GripperSignalSpec(
+		source=signal_source,
+		dim=gripper_dim,
+		close_direction=close_direction,
+		open_direction=open_direction or _opposite_direction(close_direction),
+	)
+
+
+def gripper_signal_spec_from_config(
+	cfg: dict[str, Any],
+	*,
+	source: str | None = None,
+	side: str | None = None,
+	dim: int | None = None,
+	close_direction: Direction | None = None,
+	open_direction: Direction | None = None,
+) -> GripperSignalSpec:
+	resolved_source = source or cfg.get("signal_source", "observation.state")
+	source_cfg = cfg.get(resolved_source, {})
+	if not isinstance(source_cfg, dict):
+		source_cfg = {}
+
+	gripper_root = cfg.get("gripper", {})
+	if not isinstance(gripper_root, dict):
+		gripper_root = {}
+
+	resolved_side = side or cfg.get("gripper_side")
+
+	gripper_cfg_key = "state" if resolved_source == "observation.state" else resolved_source
+	gripper_cfg = gripper_root.get(gripper_cfg_key, {})
+	if not isinstance(gripper_cfg, dict):
+		gripper_cfg = {}
+
+	resolved_dim = dim
+	if resolved_dim is None and resolved_side is not None and f"{resolved_side}_index" in gripper_cfg:
+		resolved_dim = int(gripper_cfg[f"{resolved_side}_index"])
+	if resolved_dim is None and "index" in gripper_cfg:
+		resolved_dim = int(gripper_cfg["index"])
+	if resolved_dim is None and "right_index" in gripper_cfg:
+		resolved_dim = int(gripper_cfg["right_index"])
+	if resolved_dim is None and "left_index" in gripper_cfg:
+		resolved_dim = int(gripper_cfg["left_index"])
+	if resolved_dim is None:
+		resolved_dim = int(cfg.get("gripper_dim", -1))
+
+	resolved_close_direction = close_direction or source_cfg.get("close_direction") or cfg.get("direction", "decrease")
+	resolved_open_direction = open_direction or source_cfg.get("open_direction")
+
+	return resolve_gripper_signal_spec(
+		signal_source=resolved_source,
+		gripper_dim=resolved_dim,
+		close_direction=resolved_close_direction,
+		open_direction=resolved_open_direction,
+	)
+
+
+def gripper_signal(
+    items: list[dict[str, Any]],
+	spec: GripperSignalSpec | None = None,
+	*,
+	source: str = "observation.state",
+	dim: int = -1,
+) -> np.ndarray:
 	if not items:
-		raise ValueError("Cannot build a gripper signal from empty items.")
-	values = np.stack([to_numpy(item[source]) for item in items])
+		raise ValueError(
+			"Cannot build a gripper signal from empty items."
+		)
+
+	resolved_spec = spec or resolve_gripper_signal_spec(
+		signal_source=source,
+		gripper_dim=dim,
+	)
+
+	values = np.stack(
+		[to_numpy(item[resolved_spec.source]) for item in items]
+ 	)
+
 	if values.ndim == 1:
 		return values.astype(float)
-	return values[:, dim].astype(float)
+
+	if resolved_spec.dim >= values.shape[1] or resolved_spec.dim < -values.shape[1]:
+		raise IndexError(
+			f"Gripper dim {resolved_spec.dim} is invalid for "
+			f"signal shape {values.shape}."
+		)
+
+	return values[:, resolved_spec.dim].astype(float)
+
+
+def detect_gripper_close(
+    signal: np.ndarray,
+    direction: Direction,
+) -> Event:
+    signal = np.asarray(signal, dtype=float)
+    event = _largest_change(signal, direction)
+
+    return Event(
+        "gripper_close",
+        event.local_index,
+        event.score,
+        event.method,
+        event.signal_before,
+        event.signal_after,
+    )
+
+
+def detect_gripper_open(
+    signal: np.ndarray,
+    direction: Direction,
+) -> Event:
+    signal = np.asarray(signal, dtype=float)
+    event = _largest_change(signal, direction)
+
+    return Event(
+        "gripper_open",
+        event.local_index,
+        event.score,
+        event.method,
+        event.signal_before,
+        event.signal_after,
+    )
 
 
 def image_to_pil(image: Any) -> Image.Image:
@@ -249,9 +376,11 @@ def extract_keyframes_for_episode(
 	keyframe_types: list[str],
 	cameras: list[str],
 	out_dir: str | Path,
+	gripper_signal_spec: GripperSignalSpec | None = None,
 	signal_source: str = "observation.state",
 	gripper_dim: int = -1,
-	direction: str = "decrease",
+	direction: Direction = "decrease",
+	open_direction: Direction | None = None,
 	offset: int = 5,
 	smooth_window: int = 1,
 ) -> list[Keyframe]:
@@ -264,16 +393,25 @@ def extract_keyframes_for_episode(
 
 	out_dir = Path(out_dir)
 	out_dir.mkdir(parents=True, exist_ok=True)
+	resolved_spec = resolve_gripper_signal_spec(
+		spec=gripper_signal_spec,
+		signal_source=signal_source,
+		gripper_dim=gripper_dim,
+		close_direction=direction,
+		open_direction=open_direction,
+	)
 
 	signal = _smooth_signal(
-		gripper_signal(items, source=signal_source, dim=gripper_dim),
+		gripper_signal(items, resolved_spec),
 		smooth_window,
 	)
 
-	close_event = detect_gripper_close(signal, direction=direction)
-	open_direction = "increase" if direction == "decrease" else "decrease"
+	close_event = detect_gripper_close(signal, direction=resolved_spec.close_direction)
 	if close_event.local_index + 1 < len(signal):
-		open_event_base = detect_gripper_open(signal[close_event.local_index:], direction=open_direction)
+		open_event_base = detect_gripper_open(
+			signal[close_event.local_index:],
+			direction=resolved_spec.open_direction,
+		)
 		open_event = Event(
 			name=open_event_base.name,
 			local_index=open_event_base.local_index + close_event.local_index,
@@ -283,7 +421,7 @@ def extract_keyframes_for_episode(
 			signal_after=open_event_base.signal_after,
 		)
 	else:
-		open_event = detect_gripper_open(signal, direction=open_direction)
+		open_event = detect_gripper_open(signal, direction=resolved_spec.open_direction)
 
 	keyframe_specs: dict[str, tuple[int, float, str]] = {
 		"episode_start": (0, 0.0, "episode_boundary"),

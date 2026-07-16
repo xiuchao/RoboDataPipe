@@ -6,8 +6,9 @@ from typing import Any
 
 
 DEFAULT_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"
-DEFAULT_DEMO_UPRIGHT = "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/upstraight.jpg"
-DEFAULT_DEMO_NON_UPRIGHT = "/data/xiuchao/biArm/DEM/data_anno/upstraight_labeling/lying"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_DEMO_UPRIGHT = PROJECT_ROOT / "data_anno" / "upstraight_labeling" / "upstraight.jpg"
+DEFAULT_DEMO_NON_UPRIGHT = PROJECT_ROOT / "data_anno" / "upstraight_labeling" / "lying"
 
 
 @dataclass(frozen=True)

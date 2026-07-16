@@ -1,4 +1,5 @@
 DSRFM_easy:
+  robot_type: ur5
   repo_id: ases200q2/UR5_RTDE_SpaceMouse_EE_pick_and_place_object_Easy_filtered
   root: /data/xiuchao/biArm/DEM/data_DSRFM/ur5_easy_filtered
   signal_source: action
@@ -10,6 +11,7 @@ DSRFM_easy:
   default_camera: 
 
 DSRFM_v3:
+  robot_type: ur5
   repo_id: ases200q2/UR5_RTDE_SpaceMouse_EE_v3_20260625-135224_filtered
   root: /data/xiuchao/biArm/DEM/data_DSRFM/ur5_v3_filtered
   cameras:
@@ -18,6 +20,7 @@ DSRFM_v3:
   default_camera: 
 
 DEM_handposition:
+  robot_type: aibot2
   repo_id: alphabot2/aibot2_2026-07-07_hand_position_donothing
   root: /data/xiuchao/biArm/DEM/data_DEM/hand_postion_donothing/
   cameras:
@@ -26,10 +29,53 @@ DEM_handposition:
   default_camera: observation.images.camera_2
 
 DEM_pickplace:
+  robot_type: aibot2
   repo_id: alphabot2/aibot2_2026-07-07_hand_position_pick_and_place
   root: /data/xiuchao/biArm/DEM/data_DEM/hand_position_pick_and_place/
+
+  action_layout:
+    left_slice: [0, 8]
+    right_slice: [8, 16]
+    pos_slice: [0, 3]
+    quat_slice: [3, 7]
+  
+  observation.state:
+    close_direction: decrease
+    open_direction: increase
+
+  action:
+    close_direction: increase
+    open_direction: decrease
+
+  gripper:
+    state:
+      left_index: 14
+      right_index: 15
+      representation: joint_position
+      closed_value: 0.0
+      open_value: 0.8
+      larger_means: more_open
+
+    action:
+      left_index: 14
+      right_index: 15
+      representation: binary_command
+      open_value: 0.0
+      closed_value: 1.0
+      larger_means: more_closed
+
+    estimated_delay_frames: 9
+    fps: 10
+
   cameras:
-    - observation.images.camera_1
-    - observation.images.camera_2
-  default_camera: observation.images.camera_2
+    top: observation.images.camera_top
+    left: observation.images.camera_left
+    right: observation.images.camera_right
+    both:
+      - observation.images.camera_top
+      - observation.images.camera_front
+    global:
+      - observation.images.camera_top
+      - observation.images.camera_front
+    default: observation.images.camera_top
 

@@ -1,86 +1,67 @@
 import numpy as np
-from pathlib import Path
-from io import BytesIO
-import json
-import re
 import pandas as pd
 import subprocess
 import time
-from functools import lru_cache
+from pathlib import Path
+from typing import Any
 
-import pyarrow.parquet as pq
-from datasets import load_dataset
-from huggingface_hub import snapshot_download
+from dataloader import DATASET_REGISTRY, load_lerobot_dataset
+from keyframes import (
+    GripperSignalSpec,
+    build_episode_index,
+    detect_gripper_close,
+    detect_gripper_open,
+    gripper_signal_spec_from_config,
+    gripper_signal,
+    item_frame_index,
+    item_timestamp,
+    resolve_gripper_signal_spec,
+    scalar,
+    to_numpy,
+)
 
 
-def load_lerobot_parquet(root):
-    """
-    Load a local LeRobot-style dataset from:
-        root/
-          data/chunk-xxx/file-xxx.parquet
-          meta/info.json
+def _load_episode_items(ds: Any, global_indices: list[int]) -> list[dict[str, Any]]:
+    hf_dataset = getattr(ds, "hf_dataset", None)
+    if hf_dataset is None:
+        return [ds[i] for i in global_indices]
 
-    Returns:
-        df: pandas DataFrame with all frames
-        info: dict, dataset metadata if available
-    """
-    root = Path(root)
+    batch = hf_dataset.select(global_indices)
+    return [
+        {column: batch[column][i] for column in batch.column_names}
+        for i in range(len(global_indices))
+    ]
 
-    info_path = root / "meta" / "info.json"
-    if info_path.exists():
-        info = json.loads(info_path.read_text())
-    else:
-        info = {}
 
-    parquet_files = sorted((root / "data").glob("chunk-*/*.parquet"))
-
-    if not parquet_files:
-        raise FileNotFoundError(f"No parquet files found under {root / 'data'}")
-
-    tables = []
-    for p in parquet_files:
-        table = pq.read_table(p)
-        tables.append(table.to_pandas())
-
-    df = pd.concat(tables, ignore_index=True)
-
-    # Keep frame order stable
-    sort_cols = []
-    if "episode_index" in df.columns:
-        sort_cols.append("episode_index")
-    if "frame_index" in df.columns:
-        sort_cols.append("frame_index")
-    if sort_cols:
-        df = df.sort_values(sort_cols).reset_index(drop=True)
-
-    return df, info
-
-def compute_action_state_metrics(df):
+def compute_action_state_metrics(ds: Any) -> pd.DataFrame:
     """
     Compute episode-level action/state quality metrics.
 
-    Expected columns:
+    Expected dataset fields:
         episode_index
         frame_index
-        action: shape [7]
-        observation.state: shape [14]
+        action
+        observation.state
 
     Returns:
         metrics_df: one row per episode
     """
+    hf_dataset = getattr(ds, "hf_dataset", None)
+    available_columns = hf_dataset.column_names if hf_dataset is not None else list(ds[0].keys())
     required_cols = ["episode_index", "action", "observation.state"]
-    missing = [c for c in required_cols if c not in df.columns]
+    missing = [c for c in required_cols if c not in available_columns]
     if missing:
         raise KeyError(f"Missing required columns: {missing}")
 
     rows = []
 
-    for ep_idx, ep in df.groupby("episode_index"):
-        if "frame_index" in ep.columns:
-            ep = ep.sort_values("frame_index")
+    for episode_slice in build_episode_index(ds):
+        items = _load_episode_items(ds, episode_slice.global_indices)
+        if not items:
+            continue
 
-        actions = np.stack(ep["action"].to_numpy()).astype(np.float32)
-        states = np.stack(ep["observation.state"].to_numpy()).astype(np.float32)
+        actions = np.stack([to_numpy(item["action"]) for item in items]).astype(np.float32)
+        states = np.stack([to_numpy(item["observation.state"]) for item in items]).astype(np.float32)
 
         ee_action = actions[:, :6]
         gripper_cmd = actions[:, 6]
@@ -97,8 +78,8 @@ def compute_action_state_metrics(df):
         ee_delta = np.diff(ee_pos, axis=0)
 
         rows.append({
-            "episode_index": int(ep_idx),
-            "length": int(len(ep)),
+            "episode_index": int(episode_slice.episode_index),
+            "length": int(len(items)),
 
             # action quality
             "action_norm_mean": float(np.linalg.norm(ee_action, axis=1).mean()),
@@ -138,51 +119,86 @@ def compute_action_state_metrics(df):
     metrics_df = pd.DataFrame(rows)
     return metrics_df
 
+
 def select_key_frames_before_pick_and_place(
     ds,
     episode_index,
+    cfg: dict[str, Any] | None = None,
+    gripper_signal_spec: GripperSignalSpec | None = None,
+    signal_source="action",
     gripper_dim=-1,
     transition_threshold=0.5,
     frames_before=1,
+    direction="increase",
+    open_direction=None,
+    side: str | None = None,
 ):
-    ex = ds.filter(lambda x: x["episode_index"] == episode_index)
-    actions = np.asarray(ex["action"], dtype=np.float32)
-
-    if len(actions) < 2:
-        raise ValueError(f"episode {episode_index} is too short to select key frames")
+    del transition_threshold
 
     if frames_before < 1:
         raise ValueError("frames_before must be >= 1")
 
-    gripper = actions[:, gripper_dim]
-    transitions = np.diff(gripper)
+    episode_slices = build_episode_index(ds)
+    episode_slice = next(
+        (episode_slice for episode_slice in episode_slices if episode_slice.episode_index == episode_index),
+        None,
+    )
+    if episode_slice is None:
+        raise ValueError(f"episode {episode_index} not found")
 
-    pick_candidates = np.flatnonzero(transitions > transition_threshold)
-    if len(pick_candidates) == 0:
-        raise ValueError(f"episode {episode_index} has no pick transition")
+    items = _load_episode_items(ds, episode_slice.global_indices)
+    actions = np.stack([to_numpy(item["action"]) for item in items]).astype(np.float32)
 
-    place_candidates = np.flatnonzero(transitions < -transition_threshold)
-    place_candidates = place_candidates[place_candidates > pick_candidates[0]]
-    if len(place_candidates) == 0:
-        raise ValueError(f"episode {episode_index} has no place transition after pick")
+    if len(actions) < 2:
+        raise ValueError(f"episode {episode_index} is too short to select key frames")
+
+    if cfg is not None:
+        resolved_spec = gripper_signal_spec_from_config(
+            cfg,
+            source=signal_source,
+            side=side,
+            dim=gripper_dim,
+            close_direction=direction,
+            open_direction=open_direction,
+        )
+    else:
+        resolved_spec = resolve_gripper_signal_spec(
+            spec=gripper_signal_spec,
+            signal_source=signal_source,
+            gripper_dim=gripper_dim,
+            close_direction=direction,
+            open_direction=open_direction,
+        )
+
+    signal = gripper_signal(items, resolved_spec)
+    pick_event = detect_gripper_close(signal, direction=resolved_spec.close_direction)
+
+    if pick_event.local_index + 1 < len(signal):
+        place_event_base = detect_gripper_open(
+            signal[pick_event.local_index:],
+            direction=resolved_spec.open_direction,
+        )
+        place_local_index = place_event_base.local_index + pick_event.local_index
+    else:
+        place_event_base = detect_gripper_open(signal, direction=resolved_spec.open_direction)
+        place_local_index = place_event_base.local_index
 
     def build_key_frame(transition_idx, label):
         key_frame_idx = max(0, int(transition_idx) - (frames_before - 1))
+        item = items[key_frame_idx]
         return {
             "label": label,
             "episode_index": int(episode_index),
-            "frame_index": int(ex["frame_index"][key_frame_idx]),
-            "dataset_index": int(ex["index"][key_frame_idx]),
-            "timestamp": float(ex["timestamp"][key_frame_idx]),
+            "frame_index": item_frame_index(item, key_frame_idx),
+            "dataset_index": int(episode_slice.global_indices[key_frame_idx]),
+            "timestamp": item_timestamp(item),
             "action": actions[key_frame_idx].tolist(),
-            "observation_state": np.asarray(
-                ex["observation.state"][key_frame_idx], dtype=np.float32
-            ).tolist(),
+            "observation_state": np.asarray(item["observation.state"], dtype=np.float32).tolist(),
         }
 
     return {
-        "before_pick": build_key_frame(pick_candidates[0], "before_pick"),
-        "before_place": build_key_frame(place_candidates[0], "before_place"),
+        "before_pick": build_key_frame(pick_event.local_index, "before_pick"),
+        "before_place": build_key_frame(place_local_index, "before_place"),
     }
 
 
@@ -322,22 +338,23 @@ def auto_view_episodes(
             print("Stopped review.")
             break
 
-# --------------------------------------------------------------------------
+# --------------------------------------------------------------
 if __name__ == "__main__":
 
-    ROOT = Path("/data/xiuchao/biArm/DEM/ur5_easy_filtered")
-    # load dataset and print some info
-    df, info = load_lerobot_parquet(ROOT)
-    print(info)
-    print(df.shape)
-    print(df.columns.tolist())
-    print(df.iloc[0]["action"])
-    print(df.iloc[0]["observation.state"])
-    breakpoint()
+    DATASET_NAME = "DSRFM_easy"
+    ds, cfg = load_lerobot_dataset(DATASET_NAME, registry_path=DATASET_REGISTRY)
+    root = Path(cfg["root"])
+    hf_dataset = getattr(ds, "hf_dataset", None)
+
+    print({"dataset": DATASET_NAME, "root": str(root), "repo_id": cfg["repo_id"]})
+    print(f"episodes: {len(build_episode_index(ds))}")
+    print(f"frames: {len(ds)}")
+    if hf_dataset is not None:
+        print(hf_dataset.column_names)
 
     # get episode-level metrics and save to CSV
-    metrics_df = compute_action_state_metrics(df)
-    out_path = ROOT / "quality_action_state.csv"
+    metrics_df = compute_action_state_metrics(ds)
+    out_path = root / "quality_action_state.csv"
     metrics_df.to_csv(out_path, index=False)
 
     print(metrics_df.describe())
@@ -354,7 +371,7 @@ if __name__ == "__main__":
 
     # rank suspicious episodes based on metrics
     ranked_df = rank_suspicious_episodes(metrics_df)
-    ranked_path = ROOT / "quality_ranked_suspicious.csv"
+    ranked_path = root / "quality_ranked_suspicious.csv"
     ranked_df.to_csv(ranked_path, index=False)
 
     print("\nMost suspicious episodes:")
@@ -375,7 +392,7 @@ if __name__ == "__main__":
 
     # review df
     review_df = make_review_commands(ranked_df, n=30)
-    review_df.to_csv(ROOT / "review_commands.csv", index=False)
+    review_df.to_csv(root / "review_commands.csv", index=False)
 
     print(review_df[
         ["episode_index", "suspicious_score", "length", "action_jerk_max", "viz_command"]
@@ -383,7 +400,7 @@ if __name__ == "__main__":
 
     auto_view_episodes(
     ranked_df,
-    root=ROOT,
+    root=root,
     n=20,
     start_rank=20,
     )

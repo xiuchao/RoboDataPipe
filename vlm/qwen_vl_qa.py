@@ -4,12 +4,17 @@ import argparse
 import json
 from time import perf_counter
 from pathlib import Path
+import sys
 from typing import Any
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import torch
 from qwen_vl_utils import process_vision_info
 from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
-from qwen_vl_config import (
+from vlm.qwen_vl_config import (
     DEFAULT_MODEL,
     PROMPT_MODES,
     build_messages_for_mode,
