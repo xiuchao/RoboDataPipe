@@ -10,7 +10,14 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from dataloader import DATASET_REGISTRY, load_lerobot_dataset
 from project_paths import KEYFRAME_OUTPUT_DIR
-from robot_events.keyframes import extract_keyframes_for_episode, gripper_signal_spec_from_config, save_keyframes_json
+from robot_events.keyframes import (
+    build_episode_index,
+    extract_keyframes_for_episode,
+    gripper_signal_spec_from_config,
+    release_behavior_spec_from_config,
+    retreat_behavior_spec_from_config,
+    save_keyframes_json,
+)
 from robot_events.registry import resolve_episode_cameras
 
 
@@ -25,6 +32,8 @@ DEFAULT_KEYFRAMES = [
     "episode_end",
 ]
 DEFAULT_KEYFRAME_OUT = str(KEYFRAME_OUTPUT_DIR)
+RETREAT_KEYFRAMES = {"pre_retreat", "retreat_start", "post_retreat"}
+RELEASE_KEYFRAMES = {"gripper_fully_open", "release_keyframe"}
 
 
 def resolve_camera_context_keyframe(keyframe_types: list[str]) -> str | None:
@@ -32,6 +41,11 @@ def resolve_camera_context_keyframe(keyframe_types: list[str]) -> str | None:
         "gripper_close",
         "pre_grasp",
         "post_grasp",
+        "gripper_fully_open",
+        "release_keyframe",
+        "retreat_start",
+        "pre_retreat",
+        "post_retreat",
         "gripper_open",
         "pre_place",
         "post_place",
@@ -56,6 +70,19 @@ def normalize_output_root(out: str | Path) -> Path:
     return out_path
 
 
+def resolve_episode_indices(ds, episodes: list[int] | None) -> list[int]:
+    available = [episode_slice.episode_index for episode_slice in build_episode_index(ds)]
+    if episodes is None:
+        return available
+
+    available_set = set(available)
+    missing = [episode_index for episode_index in episodes if episode_index not in available_set]
+    if missing:
+        raise ValueError(f"Episodes not found: {missing}. Available range: {available[:3]}...{available[-3:]}")
+
+    return episodes
+
+
 def parse_args():
     parser = argparse.ArgumentParser()
 
@@ -72,8 +99,10 @@ def parse_args():
     parser.add_argument(
         "--episode",
         type=int,
-        required=True,
-        help="Episode index",
+        action="append",
+        dest="episodes",
+        default=None,
+        help="Optional episode index to process. Can be repeated. Defaults to all episodes.",
     )
     parser.add_argument(
         "--keyframes",
@@ -128,6 +157,46 @@ def parse_args():
         default=1,
         help="Optional moving average window for gripper signal",
     )
+    parser.add_argument(
+        "--retreat-source",
+        default=None,
+        help="Optional position source for retreat detection, e.g. action or observation.state.",
+    )
+    parser.add_argument(
+        "--retreat-window",
+        type=int,
+        default=None,
+        help="Window size in frames for retreat-start displacement detection.",
+    )
+    parser.add_argument(
+        "--retreat-displacement-threshold",
+        type=float,
+        default=None,
+        help="Minimum position displacement needed to mark retreat_start.",
+    )
+    parser.add_argument(
+        "--release-open-tolerance",
+        type=float,
+        default=None,
+        help="Tolerance around the configured open_value when resolving release_keyframe.",
+    )
+    parser.add_argument(
+        "--release-gripper-source",
+        default=None,
+        help="Signal source used for gripper_fully_open, e.g. observation.state or action.",
+    )
+    parser.add_argument(
+        "--release-stationary-window",
+        type=int,
+        default=None,
+        help="Forward window in frames used to confirm the arm is still stationary at release_keyframe.",
+    )
+    parser.add_argument(
+        "--release-stationary-displacement-threshold",
+        type=float,
+        default=None,
+        help="Maximum forward displacement allowed while the arm is still considered stationary at release_keyframe.",
+    )
 
     return parser.parse_args()
 
@@ -146,14 +215,8 @@ if __name__ == "__main__":
             raise ValueError("--camera auto cannot be combined with explicit camera names")
         requested_cameras = None
 
+    episode_indices = resolve_episode_indices(ds, args.episodes)
     camera_context_keyframe = resolve_camera_context_keyframe(args.keyframes)
-    cameras, motion = resolve_episode_cameras(
-        ds,
-        cfg,
-        args.episode,
-        requested_cameras,
-        keyframe_type=camera_context_keyframe,
-    )
 
     gripper_signal_spec = gripper_signal_spec_from_config(
         cfg,
@@ -162,43 +225,81 @@ if __name__ == "__main__":
         dim=args.gripper_dim,
         close_direction=args.direction,
     )
+    retreat_behavior_spec = None
+    release_behavior_spec = None
+    needs_retreat = bool(set(args.keyframes) & (RETREAT_KEYFRAMES | RELEASE_KEYFRAMES))
+    if needs_retreat:
+        retreat_behavior_spec = retreat_behavior_spec_from_config(
+            cfg,
+            gripper_signal_spec=gripper_signal_spec,
+            position_source=args.retreat_source,
+            side=args.gripper_side,
+            window=args.retreat_window,
+            displacement_threshold=args.retreat_displacement_threshold,
+        )
+    if set(args.keyframes) & RELEASE_KEYFRAMES:
+        release_behavior_spec = release_behavior_spec_from_config(
+            cfg,
+            gripper_signal_spec=gripper_signal_spec,
+            position_source=args.retreat_source,
+            side=args.gripper_side,
+            fully_open_source=args.release_gripper_source,
+            stationary_window=args.release_stationary_window,
+            stationary_displacement_threshold=args.release_stationary_displacement_threshold,
+            open_tolerance=args.release_open_tolerance,
+        )
 
     output_root = normalize_output_root(args.out)
-    out_dir = output_root / args.dataset / f"ep_{args.episode:03d}"
-
-
-    keyframes = extract_keyframes_for_episode(
-        ds=ds,
-        dataset_name=args.dataset,
-        episode_index=args.episode,
-        keyframe_types=args.keyframes,
-        cameras=cameras,
-        out_dir=out_dir,
-        gripper_signal_spec=gripper_signal_spec,
-        offset=args.offset,
-        smooth_window=args.smooth_window,
-    )
-
-    json_path = out_dir / f"keyframes.json"
-    save_keyframes_json(keyframes, json_path)
-
-    print(f"[done] saved {len(keyframes)} keyframes")
-    print(f"[out]  {out_dir}")
-    print(f"[json] {json_path}")
-    if motion is not None:
-        print(f"[moving_arm] {motion['moving_arm']}")
-        print(f"[left_score] {motion['left_score']}")
-        print(f"[right_score] {motion['right_score']}")
-        print(f"[camera_context_keyframe] {camera_context_keyframe}")
-        print(f"[selected_cameras] {cameras}")
+    print(f"[episodes] {len(episode_indices)}")
     print(f"[gripper_signal_spec] {gripper_signal_spec}")
+    if retreat_behavior_spec is not None:
+        print(f"[retreat_behavior_spec] {retreat_behavior_spec}")
+    if release_behavior_spec is not None:
+        print(f"[release_behavior_spec] {release_behavior_spec}")
 
-    for kf in keyframes:
-        print(
-            f"{kf.keyframe_type:16s} "
-            f"ep={kf.episode_index} "
-            f"frame={kf.frame_index} "
-            f"time={kf.timestamp} "
-            f"score={kf.score}"
+    for episode_index in episode_indices:
+        cameras, motion = resolve_episode_cameras(
+            ds,
+            cfg,
+            episode_index,
+            requested_cameras,
+            keyframe_type=camera_context_keyframe,
         )
+        out_dir = output_root / args.dataset / f"ep_{episode_index:03d}"
+
+        keyframes = extract_keyframes_for_episode(
+            ds=ds,
+            dataset_name=args.dataset,
+            episode_index=episode_index,
+            keyframe_types=args.keyframes,
+            cameras=cameras,
+            out_dir=out_dir,
+            gripper_signal_spec=gripper_signal_spec,
+            retreat_behavior_spec=retreat_behavior_spec,
+            release_behavior_spec=release_behavior_spec,
+            offset=args.offset,
+            smooth_window=args.smooth_window,
+        )
+
+        json_path = out_dir / "keyframes.json"
+        save_keyframes_json(keyframes, json_path)
+
+        print(f"[done] ep={episode_index} saved {len(keyframes)} keyframes")
+        print(f"[out]  {out_dir}")
+        print(f"[json] {json_path}")
+        if motion is not None:
+            print(f"[moving_arm] {motion['moving_arm']}")
+            print(f"[left_score] {motion['left_score']}")
+            print(f"[right_score] {motion['right_score']}")
+            print(f"[camera_context_keyframe] {camera_context_keyframe}")
+            print(f"[selected_cameras] {cameras}")
+
+        for kf in keyframes:
+            print(
+                f"{kf.keyframe_type:16s} "
+                f"ep={kf.episode_index} "
+                f"frame={kf.frame_index} "
+                f"time={kf.timestamp} "
+                f"score={kf.score}"
+            )
 

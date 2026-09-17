@@ -292,10 +292,10 @@ def parse_structured_answer(answer: str) -> dict[str, Any] | None:
     return None
 
 
-def answer_question_about_keyframes(
-    keyframe_dir: str | Path,
+def answer_question_about_image_entries(
+    image_entries: list[dict[str, Any]],
     question: str | None,
-    cameras: list[str] | None = None,
+    *,
     keyframe_types: list[str] | None = None,
     model_name: str = DEFAULT_MODEL,
     max_new_tokens: int = 256,
@@ -306,10 +306,9 @@ def answer_question_about_keyframes(
     processor: Any | None = None,
     model: Any | None = None,
 ) -> dict[str, Any]:
-    records = load_keyframe_records(keyframe_dir)
-    resolved_keyframe_types = resolve_keyframe_types(records, keyframe_types, prompt_mode)
-    selected_records = select_records(records, resolved_keyframe_types)
-    image_entries = collect_images(keyframe_dir, selected_records, cameras)
+    if not image_entries:
+        raise ValueError("No image entries were provided")
+
     resolved_question = resolve_question(question, prompt_mode)
     messages = build_messages_for_mode(
         image_entries,
@@ -332,6 +331,16 @@ def answer_question_about_keyframes(
     inference_seconds = perf_counter() - inference_start
     frame_count = len(image_entries)
 
+    resolved_keyframe_types = keyframe_types
+    if resolved_keyframe_types is None:
+        resolved_keyframe_types = list(
+            dict.fromkeys(
+                entry.get("keyframe_type")
+                for entry in image_entries
+                if entry.get("keyframe_type") is not None
+            )
+        )
+
     return {
         "prompt_mode": prompt_mode,
         "keyframe_types": resolved_keyframe_types,
@@ -345,6 +354,39 @@ def answer_question_about_keyframes(
         "inference_seconds_per_frame": inference_seconds / frame_count if frame_count else None,
         "demonstrations": demonstration_entries,
     }
+
+
+def answer_question_about_keyframes(
+    keyframe_dir: str | Path,
+    question: str | None,
+    cameras: list[str] | None = None,
+    keyframe_types: list[str] | None = None,
+    model_name: str = DEFAULT_MODEL,
+    max_new_tokens: int = 256,
+    temperature: float = 0.0,
+    dtype_name: str = "auto",
+    prompt_mode: str = "qa",
+    demonstration_entries: list[dict[str, Any]] | None = None,
+    processor: Any | None = None,
+    model: Any | None = None,
+) -> dict[str, Any]:
+    records = load_keyframe_records(keyframe_dir)
+    resolved_keyframe_types = resolve_keyframe_types(records, keyframe_types, prompt_mode)
+    selected_records = select_records(records, resolved_keyframe_types)
+    image_entries = collect_images(keyframe_dir, selected_records, cameras)
+    return answer_question_about_image_entries(
+        image_entries,
+        question,
+        keyframe_types=resolved_keyframe_types,
+        model_name=model_name,
+        max_new_tokens=max_new_tokens,
+        temperature=temperature,
+        dtype_name=dtype_name,
+        prompt_mode=prompt_mode,
+        demonstration_entries=demonstration_entries,
+        processor=processor,
+        model=model,
+    )
 
 
 if __name__ == "__main__":

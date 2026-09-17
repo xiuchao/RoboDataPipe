@@ -6,4 +6,8 @@ data_DEM/
 data_DSRFM/
 settings/
 
+# generated artifacts
+outputs/
+figs/
+
 *.pptx

@@ -5,7 +5,21 @@ from pathlib import Path
 from typing import Any
 
 
-DEFAULT_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"
+QWEN25_VL_7B_INSTRUCT = "Qwen/Qwen2.5-VL-7B-Instruct"
+QWEN25_VL_3B_INSTRUCT = "Qwen/Qwen2.5-VL-3B-Instruct"
+
+MODEL_ALIASES: dict[str, str] = {
+    "qwen2.5-vl-7b": QWEN25_VL_7B_INSTRUCT,
+    "qwen2.5-vl-7b-instruct": QWEN25_VL_7B_INSTRUCT,
+    "qwen25-vl-7b": QWEN25_VL_7B_INSTRUCT,
+    "7b": QWEN25_VL_7B_INSTRUCT,
+    "qwen2.5-vl-3b": QWEN25_VL_3B_INSTRUCT,
+    "qwen2.5-vl-3b-instruct": QWEN25_VL_3B_INSTRUCT,
+    "qwen25-vl-3b": QWEN25_VL_3B_INSTRUCT,
+    "3b": QWEN25_VL_3B_INSTRUCT,
+}
+
+DEFAULT_MODEL = QWEN25_VL_7B_INSTRUCT
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DEMO_UPRIGHT = PROJECT_ROOT / "data_anno" / "upstraight_labeling" / "upstraight.jpg"
 DEFAULT_DEMO_NON_UPRIGHT = PROJECT_ROOT / "data_anno" / "upstraight_labeling" / "lying"
@@ -40,6 +54,38 @@ def build_cylinder_upright_prompt() -> str:
         """.strip()
 
 
+def build_shelf_placement_after_release_prompt() -> str:
+    return """
+    You are given synchronized images from multiple robot cameras.
+
+    The robot should:
+    1. Hold a transparent plastic bag containing white or green paper.
+    2. Move the bag into the target shelf compartment.
+    3. Release the bag.
+    4. Leave the bag resting inside the compartment.
+
+    Determine the final placement status of the plastic bag after the release moment.
+
+    Decision rules:
+    - "inside": The bag is released and visibly resting inside the shelf compartment.
+    - "still_held": The gripper is still holding or pinching the bag.
+    - "dropped_outside": The bag has been released but is outside the target shelf compartment or on the floor.
+    - "missed_compartment": The bag is near the target area but has not clearly entered and settled inside the compartment.
+    - "uncertain": The final bag position cannot be confirmed.
+
+    Important:
+    - The paper inside the transparent bag may look similar to the white shelf background. Do not use a white region alone as evidence of the bag.
+    - Look for transparent edges, or consistent evidence across camera views.
+    - If visibility is poor or the bag is occluded, choose "uncertain".
+
+    Output only valid JSON:
+    {
+        "placement_status": "inside" | "still_held" | "dropped_outside" | "missed_compartment" | "uncertain",
+        "confidence": 0.0
+    }
+    """.strip()
+
+
 PROMPT_MODES: dict[str, PromptModeConfig] = {
     "qa": PromptModeConfig(
         requires_question=True,
@@ -63,6 +109,15 @@ PROMPT_MODES: dict[str, PromptModeConfig] = {
         requires_question=False,
         instruction=build_cylinder_upright_prompt(),
         default_keyframe_types=("post_place", "episode_end"),
+    ),
+    "shelf_placement_after_release": PromptModeConfig(
+        requires_question=False,
+        instruction=(
+            "You are analyzing robot keyframes from a pick-and-place episode. "
+            "Use all provided camera views together to judge final released-object placement."
+        ),
+        default_question=build_shelf_placement_after_release_prompt(),
+        default_keyframe_types=("gripper_open", "gripper_fully_open"),
     ),
 }
 
@@ -98,6 +153,15 @@ def resolve_question(question: str | None, prompt_mode: str) -> str | None:
         return question
 
     return mode_cfg.default_question
+
+
+def resolve_model_name(model_name: str | None) -> str:
+    if model_name is None:
+        return DEFAULT_MODEL
+    normalized = model_name.strip()
+    if not normalized:
+        return DEFAULT_MODEL
+    return MODEL_ALIASES.get(normalized.lower(), normalized)
 
 
 def resolve_keyframe_types(

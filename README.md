@@ -9,6 +9,10 @@ This repo is organized around a simple pipeline:
 3. Send selected frames to Qwen-VL.
 4. Save JSON and TXT summaries for either one episode or an entire dataset.
 
+DEM can also score proprioceptive demonstration quality with a DEM-owned
+adapter and analyzer stack that was distilled from reusable ideas in
+`Tools/forge`.
+
 ## Main Files
 
 - `datasets.yaml`: local dataset registry and dataset-specific signal settings.
@@ -18,6 +22,9 @@ This repo is organized around a simple pipeline:
 - `qwen_vl_config.py`: prompt templates and few-shot defaults.
 - `qwen_vl_qa.py`: frame-based QA for one extracted episode.
 - `robo_dataset_pipeline.py`: dataset-level extraction + QA pipeline.
+- `online_failure_monitor.py`: online-style failure monitor from streamed state/image records.
+- `analyze_quality.py`: DEM-owned episode and dataset quality scoring.
+- `export_online_stream.py`: export one offline episode into JSONL plus images for pseudo-online testing.
 - `user_experiments.sh`: saved example commands.
 
 ## Dataset Registry
@@ -102,6 +109,87 @@ python3.12 robo_dataset_pipeline.py \
   --max-new-tokens 120
 ```
 
+Analyze trajectory quality for a quick sample:
+
+```bash
+python3.12 scripts/analyze_quality.py \
+  --dataset DEM_pickplace \
+  --sample 10
+```
+
+The command writes a timestamped report under `outputs/quality/`. Metrics
+include per-arm smoothness, Cartesian efficiency, hesitation, path length,
+gripper chatter, timestamp regularity, saturation when bounds are available,
+and an overall score from 0 to 10. AgiBot data first passes through DEM's own
+robot adapter and canonical trajectory model in `robot_events/adapters/`, so
+generic metrics do not depend on raw 16-D indices. Omit `--sample` to analyze
+all episodes, or add `--min-score 6` for a nonzero exit status when the
+dataset falls below a required score.
+
+Run the online-style failure monitor on a JSONL stream:
+
+```bash
+python3.12 scripts/online_failure_monitor.py \
+  --dataset DEM_pickplace \
+  --input-jsonl /path/to/teleop_stream.jsonl \
+  --prompt-mode shelf_placement_after_release \
+  --camera observation.images.camera_top \
+  --camera observation.images.camera_left \
+  --output-json outputs/result/online_alerts.json \
+  --output-txt outputs/result/online_events.txt
+```
+
+Each JSONL line should be one synchronized sample with action/state arrays and camera image paths, for example:
+
+```json
+{
+  "episode_index": 0,
+  "frame_index": 105,
+  "timestamp": 10.5,
+  "action": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0],
+  "observation.state": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 0.8],
+  "images": {
+    "observation.images.camera_top": "/abs/path/top_000105.jpg",
+    "observation.images.camera_left": "/abs/path/left_000105.jpg"
+  }
+}
+```
+
+The online monitor keeps a short rolling buffer and emits a compact event log containing:
+
+- `right_arm_start_to_place`
+- `gripper_open`
+- `gripper_fully_open`
+- `object_in_shelf_status`
+- `release_retreat_start`
+
+It also emits alerts when `object_in_shelf_status` is `still_held`, `dropped_outside`, `missed_compartment`, or `uncertain`.
+
+To generate a pseudo-online stream from an existing episode for testing:
+
+```bash
+python3.12 scripts/export_online_stream.py \
+  --dataset DEM_pickplace \
+  --episode 0 \
+  --camera observation.images.camera_top \
+  --camera observation.images.camera_left \
+  --output-dir outputs/online_stream_demo \
+  --overwrite
+```
+
+To replay that stream in a local browser GUI with images plus live event/alert descriptions:
+
+```bash
+python3.12 scripts/online_monitor_gui.py \
+  --dataset DEM_pickplace \
+  --input-jsonl outputs/online_stream_demo/ep_000.jsonl \
+  --camera observation.images.camera_top \
+  --camera observation.images.camera_left \
+  --port 8765
+```
+
+Then open `http://127.0.0.1:8765` in a browser. The page starts paused, and `Play` or `Step` will advance the pseudo-online stream while accumulating emitted events and alerts.
+
 ## Output Files
 
 `robo_dataset_pipeline.py` can auto-generate output names when `--output-json` and `--output-txt` are omitted.
@@ -127,6 +215,7 @@ Supported prompt modes:
 - `qa`: free-form question answering over selected keyframes.
 - `success_judge`: task-level success judgment.
 - `cylinder_upright`: structured JSON judgment for upright vs non-upright cylinder placement.
+- `shelf_placement_after_release`: structured JSON judgment for whether the released object is inside the shelf compartment.
 
 For `cylinder_upright`, the prompt is instruction-driven and returns JSON like:
 
@@ -135,6 +224,27 @@ For `cylinder_upright`, the prompt is instruction-driven and returns JSON like:
   "is_upright": true,
   "confidence": "high"
 }
+```
+
+For `shelf_placement_after_release`, the default keyframes are `gripper_open` and `gripper_fully_open`, so with top and left cameras Qwen-VL receives 4 images per episode. The prompt returns JSON like:
+
+```json
+{
+  "placement_status": "inside",
+  "confidence": 0.95
+}
+```
+
+Example dataset run:
+
+```bash
+python3.12 robo_dataset_pipeline.py \
+  --dataset DEM_pickplace \
+  --prompt-mode shelf_placement_after_release \
+  --shot-mode zeroshot \
+  --keyframe-out outputs/keyframes_all_eps \
+  --camera observation.images.camera_top \
+  --camera observation.images.camera_left
 ```
 
 ## Notes

@@ -13,6 +13,10 @@ class BaseRobotAdapter(ABC):
     def get_gripper_signal(self, items: list[dict[str, Any]]) -> np.ndarray:
         raise NotImplementedError
 
+    @abstractmethod
+    def build_quality_trajectory(self, items: list[dict[str, Any]]):
+        raise NotImplementedError
+
     def detect_moving_arm(self, items: list[dict[str, Any]]) -> dict[str, Any]:
         return {
             "moving_arm": "single",

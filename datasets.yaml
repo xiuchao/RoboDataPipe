@@ -47,6 +47,17 @@ DEM_pickplace:
     close_direction: increase
     open_direction: decrease
 
+  retreat:
+    source: action
+    window: 5
+    displacement_threshold: 0.01
+
+  release:
+    gripper_source: observation.state
+    stationary_window: 1
+    stationary_displacement_threshold: 0.01
+    open_tolerance: 0.05
+
   gripper:
     state:
       left_index: 14
@@ -59,6 +70,8 @@ DEM_pickplace:
     action:
       left_index: 14
       right_index: 15
+      left_local_index: 7
+      right_local_index: 7
       representation: binary_command
       open_value: 0.0
       closed_value: 1.0

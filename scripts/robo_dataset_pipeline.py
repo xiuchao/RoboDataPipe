@@ -13,9 +13,19 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from dataloader import DATASET_REGISTRY, load_lerobot_dataset
 from project_paths import KEYFRAME_OUTPUT_DIR, QWENVL_OUTPUT_DIR, RESULT_OUTPUT_DIR
-from robot_events.keyframes import build_episode_index, extract_keyframes_for_episode, gripper_signal_spec_from_config, save_keyframes_json
+from robot_events.keyframes import (
+	build_episode_index,
+	extract_keyframes_for_episode,
+	gripper_signal_spec_from_config,
+	release_behavior_spec_from_config,
+	retreat_behavior_spec_from_config,
+	save_keyframes_json,
+)
+
+RETREAT_KEYFRAMES = {"pre_retreat", "retreat_start", "post_retreat"}
+RELEASE_KEYFRAMES = {"gripper_fully_open", "release_keyframe"}
 from robot_events.registry import resolve_episode_cameras
-from vlm.qwen_vl_config import DEFAULT_MODEL, PROMPT_MODES, resolve_question
+from vlm.qwen_vl_config import DEFAULT_MODEL, PROMPT_MODES, resolve_model_name, resolve_question
 from vlm.qwen_vl_qa import answer_question_about_keyframes, collect_demonstrations, load_qwen_model
 from tqdm import tqdm
 
@@ -93,7 +103,10 @@ def parse_args() -> argparse.Namespace:
 	parser.add_argument(
 		"--model",
 		default=DEFAULT_MODEL,
-		help=f"Model name. Default: {DEFAULT_MODEL}",
+		help=(
+			f"Model name or alias. Default: {DEFAULT_MODEL}. "
+			"Examples: 3b, 7b, Qwen/Qwen2.5-VL-3B-Instruct."
+		),
 	)
 	parser.add_argument(
 		"--max-new-tokens",
@@ -126,6 +139,46 @@ def parse_args() -> argparse.Namespace:
 		help="Optional moving average window for gripper signal.",
 	)
 	parser.add_argument(
+		"--retreat-source",
+		default=None,
+		help="Optional position source for retreat detection, e.g. action or observation.state.",
+	)
+	parser.add_argument(
+		"--retreat-window",
+		type=int,
+		default=None,
+		help="Window size in frames for retreat-start displacement detection.",
+	)
+	parser.add_argument(
+		"--retreat-displacement-threshold",
+		type=float,
+		default=None,
+		help="Minimum position displacement needed to mark retreat_start.",
+	)
+	parser.add_argument(
+		"--release-open-tolerance",
+		type=float,
+		default=None,
+		help="Tolerance around the configured open_value when resolving release_keyframe.",
+	)
+	parser.add_argument(
+		"--release-gripper-source",
+		default=None,
+		help="Signal source used for gripper_fully_open, e.g. observation.state or action.",
+	)
+	parser.add_argument(
+		"--release-stationary-window",
+		type=int,
+		default=None,
+		help="Forward window in frames used to confirm the arm is still stationary at release_keyframe.",
+	)
+	parser.add_argument(
+		"--release-stationary-displacement-threshold",
+		type=float,
+		default=None,
+		help="Maximum forward displacement allowed while the arm is still considered stationary at release_keyframe.",
+	)
+	parser.add_argument(
 		"--output-json",
 		default=None,
 		help="Optional path to save the dataset-level aggregate JSON. If omitted, a timestamped path is generated automatically.",
@@ -150,6 +203,8 @@ def format_summary_text(result: dict[str, Any]) -> str:
 		f"[inference_seconds_total] {result['inference_seconds_total']:.3f}",
 		f"[inference_seconds_per_frame_avg] {result['inference_seconds_per_frame_avg']:.3f}",
 		f"[non_straight_episodes] {result['non_straight_episodes']}",
+		f"[uncertain_episodes] {result.get('uncertain_episodes', [])}",
+		f"[not_inside_episodes] {result.get('not_inside_episodes', [])}",
 	]
 
 	if result["question"] is not None:
@@ -281,16 +336,26 @@ def collect_dataset_level_information(
 	prompt_mode: str = "qa",
 	offset: int = 5,
 	smooth_window: int = 1,
+	retreat_source: str | None = None,
+	retreat_window: int | None = None,
+	retreat_displacement_threshold: float | None = None,
+	release_gripper_source: str | None = None,
+	release_open_tolerance: float | None = None,
+	release_stationary_window: int | None = None,
+	release_stationary_displacement_threshold: float | None = None,
 ) -> dict[str, Any]:
 	ds, cfg = load_lerobot_dataset(dataset_name, registry_path=registry_path)
 	resolved_keyframe_types = resolve_keyframes_for_pipeline(keyframe_types, prompt_mode)
 	resolved_question = resolve_question(question, prompt_mode)
+	resolved_model_name = resolve_model_name(model_name)
 	episode_indices = resolve_episode_indices(ds, episodes)
 	demonstration_entries = collect_demonstrations(prompt_mode, shot_mode, demo_upright, demo_non_upright)
 
-	processor, model = load_qwen_model(model_name, dtype_name)
+	processor, model = load_qwen_model(resolved_model_name, dtype_name)
 	results: dict[str, dict[str, Any]] = {}
 	non_straight_episodes: list[str] = []
+	uncertain_episodes: list[str] = []
+	not_inside_episodes: list[str] = []
 	total_inference_seconds = 0.0
 	total_frame_count = 0
 
@@ -306,6 +371,27 @@ def collect_dataset_level_information(
 		keyframe_dir = episode_output_dir(keyframe_out, dataset_name, episode_index)
 		if not extracted_keyframes_ready(keyframe_dir, resolved_keyframe_types, resolved_cameras):
 			gripper_signal_spec = gripper_signal_spec_from_config(cfg)
+			retreat_behavior_spec = None
+			release_behavior_spec = None
+			needs_retreat = bool(set(resolved_keyframe_types) & (RETREAT_KEYFRAMES | RELEASE_KEYFRAMES))
+			if needs_retreat:
+				retreat_behavior_spec = retreat_behavior_spec_from_config(
+					cfg,
+					gripper_signal_spec=gripper_signal_spec,
+					position_source=retreat_source,
+					window=retreat_window,
+					displacement_threshold=retreat_displacement_threshold,
+				)
+			if set(resolved_keyframe_types) & RELEASE_KEYFRAMES:
+				release_behavior_spec = release_behavior_spec_from_config(
+					cfg,
+					gripper_signal_spec=gripper_signal_spec,
+					position_source=retreat_source,
+					fully_open_source=release_gripper_source,
+					stationary_window=release_stationary_window,
+					stationary_displacement_threshold=release_stationary_displacement_threshold,
+					open_tolerance=release_open_tolerance,
+				)
 			keyframes = extract_keyframes_for_episode(
 				ds=ds,
 				dataset_name=dataset_name,
@@ -314,6 +400,8 @@ def collect_dataset_level_information(
 				cameras=resolved_cameras,
 				out_dir=keyframe_dir,
 				gripper_signal_spec=gripper_signal_spec,
+				retreat_behavior_spec=retreat_behavior_spec,
+				release_behavior_spec=release_behavior_spec,
 				offset=offset,
 				smooth_window=smooth_window,
 			)
@@ -324,7 +412,7 @@ def collect_dataset_level_information(
 			question=question,
 			cameras=resolved_cameras,
 			keyframe_types=resolved_keyframe_types,
-			model_name=model_name,
+			model_name=resolved_model_name,
 			max_new_tokens=max_new_tokens,
 			temperature=temperature,
 			dtype_name=dtype_name,
@@ -349,6 +437,12 @@ def collect_dataset_level_information(
 		if prompt_mode == "cylinder_upright" and isinstance(parsed_answer, dict):
 			if parsed_answer.get("is_upright") is False:
 				non_straight_episodes.append(episode_key)
+		if isinstance(parsed_answer, dict):
+			placement_status = parsed_answer.get("placement_status")
+			if placement_status == "uncertain":
+				uncertain_episodes.append(episode_key)
+			elif placement_status == "not_inside":
+				not_inside_episodes.append(episode_key)
 
 	return {
 		"dataset": dataset_name,
@@ -358,13 +452,15 @@ def collect_dataset_level_information(
 		"shot_mode": shot_mode,
 		"keyframe_types": resolved_keyframe_types,
 		"question": resolved_question,
-		"model": model_name,
+		"model": resolved_model_name,
 		"keyframe_out": str(Path(keyframe_out)),
 		"demonstrations": demonstration_entries,
 		"total_episodes": len(results),
 		"inference_seconds_total": total_inference_seconds,
 		"inference_seconds_per_frame_avg": total_inference_seconds / total_frame_count if total_frame_count else 0.0,
 		"non_straight_episodes": non_straight_episodes,
+		"uncertain_episodes": uncertain_episodes,
+		"not_inside_episodes": not_inside_episodes,
 		"episodes": results,
 	}
 
@@ -389,6 +485,13 @@ if __name__ == "__main__":
 		shot_mode=args.shot_mode,
 		offset=args.offset,
 		smooth_window=args.smooth_window,
+		retreat_source=args.retreat_source,
+		retreat_window=args.retreat_window,
+		retreat_displacement_threshold=args.retreat_displacement_threshold,
+		release_gripper_source=args.release_gripper_source,
+		release_open_tolerance=args.release_open_tolerance,
+		release_stationary_window=args.release_stationary_window,
+		release_stationary_displacement_threshold=args.release_stationary_displacement_threshold,
 	)
 	result["run_time"] = run_dt.isoformat(timespec="seconds")
 
