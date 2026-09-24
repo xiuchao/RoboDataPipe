@@ -14,9 +14,13 @@ outputs/
 outputs/tmp/
 outputs/keyframes_*/
 outputs/online_stream_demo/
-docs/
+docs/*
+!docs/figs/
+docs/figs/*
+!docs/figs/quality_dashboard.png
+!docs/figs/task_dashboard.png
 tmp/
 scripts/experiments/
-figs/
+/figs/
 
 *.pptx
