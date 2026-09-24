@@ -91,21 +91,80 @@ directly or passed to VLM evaluation.
 
 The `--keyframes` option supports these event types:
 
-| Keyframe | Meaning | Implementation |
-| --- | --- | --- |
-| `episode_start` | First frame of the episode. | Episode boundary in `robehavior/keyframes.py`. |
-| `pre_grasp` | Frame offset before the detected grasp start. | `grasp_start` from `robehavior/phases.py`; offset policy in `robehavior/keyframes.py`. |
-| `gripper_close` | Detected gripper-closing event. | `grasp_start` from `robehavior/phases.py`; mapping in `robehavior/keyframes.py`. |
-| `post_grasp` | Frame offset after the detected grasp start. | `grasp_start` from `robehavior/phases.py`; offset policy in `robehavior/keyframes.py`. |
-| `pre_place` | Frame offset before the detected release start. | `release_start` from `robehavior/phases.py`; offset policy in `robehavior/keyframes.py`. |
-| `gripper_open` | Detected gripper-opening event. | `release_start` from `robehavior/phases.py`; mapping in `robehavior/keyframes.py`. |
-| `post_place` | Frame offset after the detected release start. | `release_start` from `robehavior/phases.py`; offset policy in `robehavior/keyframes.py`. |
-| `episode_end` | Last frame of the episode. | Episode boundary in `robehavior/keyframes.py`. |
-| `gripper_fully_open` | First configured open-value match after release starts. | Signal-based detection in `robehavior/keyframes.py`. |
-| `release_keyframe` | Latest fully-open, stationary frame before retreat. | Signal-based detection in `robehavior/keyframes.py`. |
-| `pre_retreat` | Frame offset before the detected retreat start. | `retreat_start` from `robehavior/phases.py`; offset policy in `robehavior/keyframes.py`. |
-| `retreat_start` | Detected retreat-phase boundary. | Event from `robehavior/phases.py`; mapping in `robehavior/keyframes.py`. |
-| `post_retreat` | Frame offset after the detected retreat start. | `retreat_start` from `robehavior/phases.py`; offset policy in `robehavior/keyframes.py`. |
+<table width="100%" style="table-layout: fixed;">
+  <colgroup>
+    <col style="width: 18%;" />
+    <col style="width: 37%;" />
+    <col style="width: 45%;" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Keyframe</th>
+      <th>Meaning</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>episode_start</code></td>
+      <td>First frame of the episode.</td>
+      <td rowspan="2">Episode boundary in <code>robehavior/keyframes.py</code>.</td>
+    </tr>
+    <tr>
+      <td><code>episode_end</code></td>
+      <td>Last frame of the episode.</td>
+    </tr>
+    <tr>
+      <td><code>pre_grasp</code></td>
+      <td>Frame offset before the detected grasp start.</td>
+      <td rowspan="3"><code>grasp_start</code> from <code>robehavior/phases.py</code>; mapping and offset policy in <code>robehavior/keyframes.py</code>.</td>
+    </tr>
+    <tr>
+      <td><code>gripper_close</code></td>
+      <td>Detected gripper-closing event.</td>
+    </tr>
+    <tr>
+      <td><code>post_grasp</code></td>
+      <td>Frame offset after the detected grasp start.</td>
+    </tr>
+    <tr>
+      <td><code>pre_place</code></td>
+      <td>Frame offset before the detected release start.</td>
+      <td rowspan="3"><code>release_start</code> from <code>robehavior/phases.py</code>; mapping and offset policy in <code>robehavior/keyframes.py</code>.</td>
+    </tr>
+    <tr>
+      <td><code>gripper_open</code></td>
+      <td>Detected gripper-opening event.</td>
+    </tr>
+    <tr>
+      <td><code>post_place</code></td>
+      <td>Frame offset after the detected release start.</td>
+    </tr>
+    <tr>
+      <td><code>gripper_fully_open</code></td>
+      <td>First configured open-value match after release starts.</td>
+      <td>Signal-based detection in <code>robehavior/keyframes.py</code>.</td>
+    </tr>
+    <tr>
+      <td><code>release_keyframe</code></td>
+      <td>Latest fully-open, stationary frame before retreat.</td>
+      <td>Signal-based detection in <code>robehavior/keyframes.py</code>.</td>
+    </tr>
+    <tr>
+      <td><code>pre_retreat</code></td>
+      <td>Frame offset before the detected retreat start.</td>
+      <td rowspan="3"><code>retreat_start</code> from <code>robehavior/phases.py</code>; event mapping and offset policy in <code>robehavior/keyframes.py</code>.</td>
+    </tr>
+    <tr>
+      <td><code>retreat_start</code></td>
+      <td>Detected retreat-phase boundary.</td>
+    </tr>
+    <tr>
+      <td><code>post_retreat</code></td>
+      <td>Frame offset after the detected retreat start.</td>
+    </tr>
+  </tbody>
+</table>
 
 The default set is `episode_start`, `pre_grasp`, `gripper_close`, `post_grasp`,
 `pre_place`, `gripper_open`, `post_place`, and `episode_end`. The `pre_*` and
