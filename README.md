@@ -1,9 +1,10 @@
 # Robot Demonstration Analysis Toolkit
 
-Tools for analyzing robot demonstrations through trajectory normalization,
-behavior and quality assessment, task-outcome evaluation, keyframe extraction,
-and optional Qwen-VL review. The toolkit supports both offline episode
-analysis and incremental online monitoring.
+A toolkit for analyzing robot demonstrations through trajectory normalization,
+behavior interpretation, context-aware quality assessment, task-outcome
+evaluation, and keyframe extraction, with optional Qwen-VL review. It supports
+both offline analysis of complete episodes and incremental monitoring of
+streaming demonstrations.
 
 <table width="100%" cellpadding="0" cellspacing="0" style="table-layout: fixed; border-collapse: collapse;">
   <tr>
@@ -18,11 +19,12 @@ analysis and incremental online monitoring.
 
 ## Background
 
-Assessing the quality of real-world teleoperation data is not simply a matter
-of mapping an action sequence to a single score. There is no universal metric
-that captures whether every demonstration is correct, useful for learning, and
-physically meaningful. The assessment must account for three sources of
-context:
+Although a real-world teleoperation demonstration can be mapped to a numerical
+score, its quality cannot be assessed from that score alone. Without the
+appropriate context, the score may neither reflect the physical validity of
+the demonstrated behavior nor indicate how informative the demonstration is
+for policy learning.
+The assessment must therefore account for three sources of context:
 
 - **Task dependence.** Success criteria and the required level of temporal
   detail vary by task. For a short task such as pressing a bell, verifying the
