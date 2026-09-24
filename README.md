@@ -5,13 +5,13 @@ behavior and quality assessment, task-outcome evaluation, keyframe extraction,
 and optional Qwen-VL review. The toolkit supports both offline episode
 analysis and incremental online monitoring.
 
-<table width="100%" style="table-layout: fixed;">
+<table width="100%" cellpadding="0" cellspacing="0" style="table-layout: fixed; border-collapse: collapse;">
   <tr>
-    <td align="center" width="50%">
-      <img src="docs/figs/task_dashboard.png" alt="Task outcome dashboard example" width="100%" height="252" style="object-fit: fill;" />
+    <td align="center" width="50%" style="padding: 0; vertical-align: top;">
+      <img src="docs/figs/task_dashboard.png" alt="Task outcome dashboard example" width="100%" height="252" style="display: block; width: 100%; height: 252px; object-fit: fill;" />
     </td>
-    <td align="center" width="50%">
-      <img src="docs/figs/quality_dashboard.png" alt="Quality dashboard example" width="100%" height="252" style="object-fit: fill;" />
+    <td align="center" width="50%" style="padding: 0; vertical-align: top;">
+      <img src="docs/figs/quality_dashboard.png" alt="Quality dashboard example" width="100%" height="252" style="display: block; width: 100%; height: 252px; object-fit: fill;" />
     </td>
   </tr>
 </table>
@@ -333,6 +333,3 @@ python3.12 scripts/replay_monitor_stream.py \
   --camera observation.images.camera_left \
   --port 8765
 ```
-
-Open `http://127.0.0.1:8765` in a browser. The page starts paused; `Play` or
-`Step` advances the stream while accumulating events and alerts.

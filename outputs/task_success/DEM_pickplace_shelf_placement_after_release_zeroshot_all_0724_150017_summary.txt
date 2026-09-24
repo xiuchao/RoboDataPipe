@@ -1,0 +1,648 @@
+[run_time] 2026-07-24T15:00:17+08:00
+[dataset] DEM_pickplace
+[model] Qwen/Qwen2.5-VL-7B-Instruct
+[prompt_mode] shelf_placement_after_release
+[shot_mode] zeroshot
+[question] You are given synchronized images from multiple robot cameras.
+
+    The robot should:
+    1. Hold a transparent plastic bag containing white or green paper.
+    2. Move the bag into the target shelf compartment.
+    3. Release the bag.
+    4. Leave the bag resting inside the compartment.
+
+    Determine the final placement status of the plastic bag.
+
+    Decision rules:
+    - "inside": The bag is released and visibly resting inside the shelf compartment.
+    - "not_inside": The bag is still held, released outside the compartment, or has fallen onto the floor.
+    - "uncertain": The final bag position cannot be confirmed.
+
+    Important:
+    - The paper inside the transparent bag may look similar to the white shelf background. Do not use a white region alone as evidence of the bag.
+    - Look for transparent edges, or consistent evidence across camera views.
+    - If visibility is poor or the bag is occluded, choose "uncertain".
+
+    Output only valid JSON:
+    {
+        "placement_status": "inside" | "not_inside" | "uncertain",
+        "confidence": 0.0
+    }
+[episodes] 68
+[inference_seconds_total] 74.084
+[inference_seconds_per_frame_avg] 0.272
+[non_straight_episodes] []
+[uncertain_episodes] ['ep016']
+[not_inside_episodes] []
+[episode] ep000
+[episode_inference_seconds] 1.674
+[episode_inference_seconds_per_frame] 0.419
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep001
+[episode_inference_seconds] 1.066
+[episode_inference_seconds_per_frame] 0.266
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep002
+[episode_inference_seconds] 1.072
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep003
+[episode_inference_seconds] 1.078
+[episode_inference_seconds_per_frame] 0.269
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep004
+[episode_inference_seconds] 1.071
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep005
+[episode_inference_seconds] 1.164
+[episode_inference_seconds_per_frame] 0.291
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep006
+[episode_inference_seconds] 1.068
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep007
+[episode_inference_seconds] 1.081
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep008
+[episode_inference_seconds] 1.071
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep009
+[episode_inference_seconds] 1.072
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep010
+[episode_inference_seconds] 1.068
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep011
+[episode_inference_seconds] 1.071
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep012
+[episode_inference_seconds] 1.082
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep013
+[episode_inference_seconds] 1.182
+[episode_inference_seconds_per_frame] 0.296
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep014
+[episode_inference_seconds] 1.071
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep015
+[episode_inference_seconds] 1.174
+[episode_inference_seconds_per_frame] 0.294
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep016
+[episode_inference_seconds] 1.157
+[episode_inference_seconds_per_frame] 0.289
+```json
+{
+    "placement_status": "uncertain",
+    "confidence": 0.5
+}
+```
+[episode] ep017
+[episode_inference_seconds] 1.065
+[episode_inference_seconds_per_frame] 0.266
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep018
+[episode_inference_seconds] 1.116
+[episode_inference_seconds_per_frame] 0.279
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep019
+[episode_inference_seconds] 1.087
+[episode_inference_seconds_per_frame] 0.272
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep020
+[episode_inference_seconds] 1.068
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep021
+[episode_inference_seconds] 1.080
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep022
+[episode_inference_seconds] 1.147
+[episode_inference_seconds_per_frame] 0.287
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep023
+[episode_inference_seconds] 1.064
+[episode_inference_seconds_per_frame] 0.266
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep024
+[episode_inference_seconds] 1.073
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep025
+[episode_inference_seconds] 1.077
+[episode_inference_seconds_per_frame] 0.269
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep026
+[episode_inference_seconds] 1.082
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep027
+[episode_inference_seconds] 1.068
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep028
+[episode_inference_seconds] 1.074
+[episode_inference_seconds_per_frame] 0.269
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep029
+[episode_inference_seconds] 1.063
+[episode_inference_seconds_per_frame] 0.266
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep030
+[episode_inference_seconds] 1.059
+[episode_inference_seconds_per_frame] 0.265
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep031
+[episode_inference_seconds] 1.076
+[episode_inference_seconds_per_frame] 0.269
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep032
+[episode_inference_seconds] 1.074
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep033
+[episode_inference_seconds] 1.068
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep034
+[episode_inference_seconds] 1.068
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep035
+[episode_inference_seconds] 1.073
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep036
+[episode_inference_seconds] 1.061
+[episode_inference_seconds_per_frame] 0.265
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep037
+[episode_inference_seconds] 1.067
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep038
+[episode_inference_seconds] 1.080
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep039
+[episode_inference_seconds] 1.072
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep040
+[episode_inference_seconds] 1.068
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep041
+[episode_inference_seconds] 1.081
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep042
+[episode_inference_seconds] 1.076
+[episode_inference_seconds_per_frame] 0.269
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep043
+[episode_inference_seconds] 1.067
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep044
+[episode_inference_seconds] 1.071
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep045
+[episode_inference_seconds] 1.072
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep046
+[episode_inference_seconds] 1.072
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep047
+[episode_inference_seconds] 1.070
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep048
+[episode_inference_seconds] 1.081
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep049
+[episode_inference_seconds] 1.073
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep050
+[episode_inference_seconds] 1.071
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep051
+[episode_inference_seconds] 1.091
+[episode_inference_seconds_per_frame] 0.273
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep052
+[episode_inference_seconds] 1.085
+[episode_inference_seconds_per_frame] 0.271
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep053
+[episode_inference_seconds] 1.065
+[episode_inference_seconds_per_frame] 0.266
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep054
+[episode_inference_seconds] 1.074
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep055
+[episode_inference_seconds] 1.070
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep056
+[episode_inference_seconds] 1.079
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep057
+[episode_inference_seconds] 1.072
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep058
+[episode_inference_seconds] 1.080
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep059
+[episode_inference_seconds] 1.070
+[episode_inference_seconds_per_frame] 0.268
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep060
+[episode_inference_seconds] 1.069
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep061
+[episode_inference_seconds] 1.082
+[episode_inference_seconds_per_frame] 0.270
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep062
+[episode_inference_seconds] 1.082
+[episode_inference_seconds_per_frame] 0.271
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep063
+[episode_inference_seconds] 1.076
+[episode_inference_seconds_per_frame] 0.269
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep064
+[episode_inference_seconds] 1.083
+[episode_inference_seconds_per_frame] 0.271
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep065
+[episode_inference_seconds] 1.076
+[episode_inference_seconds_per_frame] 0.269
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep066
+[episode_inference_seconds] 1.068
+[episode_inference_seconds_per_frame] 0.267
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```
+[episode] ep067
+[episode_inference_seconds] 1.076
+[episode_inference_seconds_per_frame] 0.269
+```json
+{
+    "placement_status": "inside",
+    "confidence": 0.95
+}
+```

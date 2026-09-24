@@ -1,0 +1,15 @@
+{
+  "dataset": "DEM_pickplace",
+  "dashboard": "Historical task evaluation | DEM_pickplace_gripper_open-gripper_fully_open_shelf_placement_after_release_zeroshot_all_0724_150017_summary.txt",
+  "exported_at": "2026-09-23T06:20:10.122Z",
+  "reviews": [
+    {
+      "episode_id": "ep016",
+      "model_status": "uncertain",
+      "confidence": 0.5,
+      "keyframe_dir": null,
+      "decision": "accept",
+      "reviewed_at": "2026-09-23T06:20:08.954Z"
+    }
+  ]
+}
