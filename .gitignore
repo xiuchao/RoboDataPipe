@@ -1,13 +1,22 @@
 __pycache__/
 *.pyc
+.venv/
 
 # local datasets
 data_DEM/
 data_DSRFM/
+data_RSFRM/
+data_anno/
 settings/
 
 # generated artifacts
 outputs/
+outputs/tmp/
+outputs/keyframes_*/
+outputs/online_stream_demo/
+docs/
+tmp/
+scripts/experiments/
 figs/
 
 *.pptx

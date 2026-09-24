@@ -11,9 +11,6 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-import torch
-from qwen_vl_utils import process_vision_info
-from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
 from vlm.qwen_vl_config import (
     DEFAULT_MODEL,
     PROMPT_MODES,
@@ -103,9 +100,11 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def resolve_dtype(dtype_name: str) -> str | torch.dtype:
+def resolve_dtype(dtype_name: str) -> Any:
     if dtype_name == "auto":
         return "auto"
+    import torch
+
     return {
         "bfloat16": torch.bfloat16,
         "float16": torch.float16,
@@ -130,7 +129,11 @@ def select_records(
     wanted = set(keyframe_types)
     selected = [record for record in records if record.get("keyframe_type") in wanted]
     if not selected:
-        available = sorted({record.get("keyframe_type") for record in records})
+        available = sorted({
+            keyframe_type
+            for record in records
+            if isinstance(keyframe_type := record.get("keyframe_type"), str)
+        })
         raise ValueError(f"No matching keyframes found. Available: {available}")
     return selected
 
@@ -219,6 +222,8 @@ def collect_demonstrations(
 
 
 def load_qwen_model(model_name: str, dtype_name: str):
+    from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
+
     processor = AutoProcessor.from_pretrained(model_name)
     model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
         model_name,
@@ -236,12 +241,15 @@ def generate_answer(
     max_new_tokens: int,
     temperature: float,
 ) -> str:
+    from qwen_vl_utils import process_vision_info
+
     prompt_text = processor.apply_chat_template(
         messages,
         tokenize=False,
         add_generation_prompt=True,
     )
-    image_inputs, video_inputs = process_vision_info(messages)
+    vision_inputs = process_vision_info(messages)
+    image_inputs, video_inputs = vision_inputs[:2]
     inputs = processor(
         text=[prompt_text],
         images=image_inputs,
@@ -390,6 +398,13 @@ def answer_question_about_keyframes(
 
 
 if __name__ == "__main__":
+    """
+    Example usage:
+    python3.12 vlm/qwen_vl_qa.py \
+      --keyframe-dir /data/xiuchao/biArm/DEM/outputs/keyframes/DSRFM_easy/ep_000 \
+      --camera observation.images.camera_1 \
+    --question "is the cylindrical object upstraight? Answer with yes or no."
+    """
     args = parse_args()
     result = answer_question_about_keyframes(
         keyframe_dir=args.keyframe_dir,

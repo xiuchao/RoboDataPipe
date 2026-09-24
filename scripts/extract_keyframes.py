@@ -8,17 +8,15 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from dataloader import DATASET_REGISTRY, load_lerobot_dataset
+from dataset_io import DATASET_REGISTRY, build_episode_index, load_lerobot_dataset
 from project_paths import KEYFRAME_OUTPUT_DIR
-from robot_events.keyframes import (
-    build_episode_index,
+from robehavior.keyframes import (
     extract_keyframes_for_episode,
     gripper_signal_spec_from_config,
     release_behavior_spec_from_config,
-    retreat_behavior_spec_from_config,
     save_keyframes_json,
 )
-from robot_events.registry import resolve_episode_cameras
+from robehavior.registry import resolve_episode_cameras
 
 
 DEFAULT_KEYFRAMES = [
@@ -32,7 +30,6 @@ DEFAULT_KEYFRAMES = [
     "episode_end",
 ]
 DEFAULT_KEYFRAME_OUT = str(KEYFRAME_OUTPUT_DIR)
-RETREAT_KEYFRAMES = {"pre_retreat", "retreat_start", "post_retreat"}
 RELEASE_KEYFRAMES = {"gripper_fully_open", "release_keyframe"}
 
 
@@ -163,18 +160,6 @@ def parse_args():
         help="Optional position source for retreat detection, e.g. action or observation.state.",
     )
     parser.add_argument(
-        "--retreat-window",
-        type=int,
-        default=None,
-        help="Window size in frames for retreat-start displacement detection.",
-    )
-    parser.add_argument(
-        "--retreat-displacement-threshold",
-        type=float,
-        default=None,
-        help="Minimum position displacement needed to mark retreat_start.",
-    )
-    parser.add_argument(
         "--release-open-tolerance",
         type=float,
         default=None,
@@ -225,18 +210,7 @@ if __name__ == "__main__":
         dim=args.gripper_dim,
         close_direction=args.direction,
     )
-    retreat_behavior_spec = None
     release_behavior_spec = None
-    needs_retreat = bool(set(args.keyframes) & (RETREAT_KEYFRAMES | RELEASE_KEYFRAMES))
-    if needs_retreat:
-        retreat_behavior_spec = retreat_behavior_spec_from_config(
-            cfg,
-            gripper_signal_spec=gripper_signal_spec,
-            position_source=args.retreat_source,
-            side=args.gripper_side,
-            window=args.retreat_window,
-            displacement_threshold=args.retreat_displacement_threshold,
-        )
     if set(args.keyframes) & RELEASE_KEYFRAMES:
         release_behavior_spec = release_behavior_spec_from_config(
             cfg,
@@ -252,8 +226,6 @@ if __name__ == "__main__":
     output_root = normalize_output_root(args.out)
     print(f"[episodes] {len(episode_indices)}")
     print(f"[gripper_signal_spec] {gripper_signal_spec}")
-    if retreat_behavior_spec is not None:
-        print(f"[retreat_behavior_spec] {retreat_behavior_spec}")
     if release_behavior_spec is not None:
         print(f"[release_behavior_spec] {release_behavior_spec}")
 
@@ -275,8 +247,8 @@ if __name__ == "__main__":
             cameras=cameras,
             out_dir=out_dir,
             gripper_signal_spec=gripper_signal_spec,
-            retreat_behavior_spec=retreat_behavior_spec,
             release_behavior_spec=release_behavior_spec,
+            dataset_config=cfg,
             offset=args.offset,
             smooth_window=args.smooth_window,
         )

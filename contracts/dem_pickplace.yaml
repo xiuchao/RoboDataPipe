@@ -1,0 +1,53 @@
+version: 1
+
+sampling:
+  frequency_hz: 10
+  timestamp_key: timestamp
+
+action:
+  key: action
+  dim: 16
+  space: end_effector
+  mode: absolute
+  coordinate_frame: unknown
+  position_unit: meter
+  rotation:
+    representation: quaternion
+    order: xyzw
+  arms:
+    left:
+      position: [0, 1, 2]
+      orientation: [3, 4, 5, 6]
+      gripper: [14]
+    right:
+      position: [7, 8, 9]
+      orientation: [10, 11, 12, 13]
+      gripper: [15]
+
+state:
+  key: observation.state
+  dim: 16
+  joint_position_unit: radian
+  arms:
+    left:
+      joint_position: [0, 1, 2, 3, 4, 5, 6]
+      gripper: [14]
+    right:
+      joint_position: [7, 8, 9, 10, 11, 12, 13]
+      gripper: [15]
+
+gripper:
+  action:
+    representation: binary_command
+    open_value: 0
+    closed_value: 1
+  state:
+    representation: joint_position
+    open_value: 0.8
+    closed_value: 0
+
+quality:
+  activity_thresholds:
+    translation_speed: 0.005
+    rotation_speed: 0.05
+    joint_speed: 0.05
