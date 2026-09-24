@@ -19,11 +19,13 @@ streaming demonstrations.
 
 ## Background
 
-Although a real-world teleoperation demonstration can be mapped to a numerical
-score, its quality cannot be assessed from that score alone. Without the
-appropriate context, the score may neither reflect the physical validity of
-the demonstrated behavior nor indicate how informative the demonstration is
-for policy learning.
+Numerical quality assessment of real-world teleoperation demonstrations is
+essential for scalable dataset review and filtering. Such scores, however, must
+be interpreted with care: although they can be computed from action and state
+signals, they do not necessarily have a clear physical meaning. Without the
+appropriate context, a score may neither reflect the physical validity of the
+demonstrated behavior nor indicate how informative the demonstration is for
+policy learning.
 The assessment must therefore account for three sources of context:
 
 - **Task dependence.** Success criteria and the required level of temporal
