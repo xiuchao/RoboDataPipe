@@ -37,7 +37,7 @@ The assessment must therefore account for three sources of context:
   robot configurations and arm roles. In a bimanual demonstration, for
   example, scoring the motion quality of an arm that is merely passive can
   produce a number without providing useful evidence about the demonstrated
-  skill.
+  skill. Behavior Aware Motion Quality Assessment would be necessary.
 - **Action-contract dependence.** Robot datasets may encode commands and state
   in joint space, end-effector space, or embodiment-specific layouts. Position,
   orientation, gripper, and timing fields must be interpreted according to an
