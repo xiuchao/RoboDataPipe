@@ -33,11 +33,13 @@ The assessment must therefore account for three sources of context:
   final outcome may be sufficient. A longer task such as arranging multiple
   objects may require checks at intermediate stages to assess successful
   progress.
-- **Embodiment dependence.** The same motion has different significance across
-  robot configurations and arm roles. In a bimanual demonstration, for
-  example, scoring the motion quality of an arm that is merely passive can
-  produce a number without providing useful evidence about the demonstrated
-  skill. Behavior Aware Motion Quality Assessment would be necessary.
+- **Embodiment dependence.** The same motion can have different significance
+  across robot configurations and arm roles. In a bimanual demonstration, for
+  example, assigning a motion-quality score to a passive arm may produce a
+  numerical result without providing useful evidence about the demonstrated
+  skill. Meaningful evaluation therefore requires behavior-aware motion quality
+  assessment, which first identifies each arm's activity and role before
+  determining which motion-quality metrics are applicable.
 - **Action-contract dependence.** Robot datasets may encode commands and state
   in joint space, end-effector space, or embodiment-specific layouts. Position,
   orientation, gripper, and timing fields must be interpreted according to an
