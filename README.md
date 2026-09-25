@@ -31,8 +31,8 @@ The assessment must therefore account for three sources of context:
 - **Task dependence.** Success criteria and the required level of temporal
   detail vary by task. For a short task such as pressing a bell, verifying the
   final outcome may be sufficient. A longer task such as arranging multiple
-  objects may require checks at intermediate stages to distinguish successful
-  progress from a coincidentally plausible final state.
+  objects may require checks at intermediate stages to assess successful
+  progress.
 - **Embodiment dependence.** The same motion has different significance across
   robot configurations and arm roles. In a bimanual demonstration, for
   example, scoring the motion quality of an arm that is merely passive can
